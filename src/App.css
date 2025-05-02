@@ -1,0 +1,16 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--color-primary-dark-0);
+}
+
+.main-content {
+  flex-grow: 1;
+  padding: 2rem;
+  box-sizing: border-box;
+}

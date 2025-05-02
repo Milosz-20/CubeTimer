@@ -1,0 +1,37 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --color-primary-dark-0: #121212;
+  --color-primary-dark-1: #1e1e1e;
+  --color-primary-dark-2: #212121;
+  --color-primary-dark-3: #232323;
+  --color-primary-dark-4: #282828;
+  --color-primary-dark-5: #2a2a2a;
+
+  --color-white: #efe9f4;
+
+  --color-accent-green-0: #03c9bc;
+
+  --color-accent-magenta-0: #db5aba;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  font-family: "Raleway", sans-serif;
+}
