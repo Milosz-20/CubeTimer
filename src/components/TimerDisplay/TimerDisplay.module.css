@@ -1,0 +1,73 @@
+.timerBox {
+  color: var(--color-white);
+  text-align: center;
+  /* background: var(--color-primary-dark-5); */
+}
+
+.scramble {
+  font-size: 2rem;
+  word-spacing: 0.5rem;
+}
+
+.options {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.time {
+  font-size: 9rem;
+}
+
+button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 2.5rem;
+  aspect-ratio: 1;
+  stroke: var(--color-white);
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.icon:hover {
+  scale: 1.05;
+  stroke: var(--color-accent-green-0);
+}
+
+.rotate {
+  animation: rotate 0.35s ease-in-out;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+    scale: 1.05;
+  }
+  to {
+    transform: rotate(360deg);
+    scale: 1;
+  }
+}
+
+.shrink {
+  animation: shrink 0.2s ease-in-out;
+}
+@keyframes shrink {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.75;
+  }
+  100% {
+    scale: 1;
+  }
+}

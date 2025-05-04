@@ -12,7 +12,7 @@ const Sidebar: React.FC = () => {
           <Link to="/timer">Home</Link>
         </li>
         <li className={styles.listItem}>
-          <Link to="/subpage1">Subpage 1</Link>
+          <Link to="/stats">Stats</Link>
         </li>
       </ul>
     </aside>

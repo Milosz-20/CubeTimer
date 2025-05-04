@@ -5,21 +5,22 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import Sidebar from "./components/Sidebar";
-import Timer from "./pages/Timer";
-import Subpage1 from "./pages/Subpage1";
+import Sidebar from "./components/Sidebar/Sidebar";
+import Timer from "./pages/Timer/TimerPage";
+import Stats from "./pages/Stats/Stats";
 import "./App.css";
 
 const App: React.FC = () => {
+  document.title = "CubeTimer";
   return (
     <Router>
       <div className="app-layout">
         <Sidebar />
-        <div className="mainContent">
+        <div className="main-content">
           <Routes>
             <Route path="/" element={<Navigate to="/timer" />} />
             <Route path="/timer" element={<Timer />} />
-            <Route path="/subpage1" element={<Subpage1 />} />
+            <Route path="/stats" element={<Stats />} />
           </Routes>
         </div>
       </div>

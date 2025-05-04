@@ -1,0 +1,50 @@
+.notification {
+  position: fixed;
+  top: 3rem;
+  right: 3rem;
+  background-color: var(--color-primary-dark-5);
+  color: var(--color-white);
+  padding: 1rem 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  animation: slideIn 0.3s ease-out, fadeOut 0.5s ease-in 4.5s forwards;
+  display: flex;
+  align-items: center;
+  font-size: 1.75rem;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  to {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+}
+
+.closeButton svg {
+  background: none;
+  border: none;
+  color: var(--color-white);
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  width: 2rem;
+  aspect-ratio: 1;
+  stroke: var(--color-white);
+  transition: transform 0.2s ease, stroke 0.2s ease;
+}
+
+.closeButton:hover svg {
+  scale: 1.05;
+  stroke: var(--color-accent-green-0);
+}
