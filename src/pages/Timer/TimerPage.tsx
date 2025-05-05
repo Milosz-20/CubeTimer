@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./TimerPage.module.css";
-import TimerDisplay from "../../components/TimerDisplay/TimerDisplay";
-import StatsBlock from "../../components/StatsBlock/StatsBlock";
-import SolvesBlock from "../../components/SolvesBlock/SolvesBlock";
-import ScrambleVisualizer from "../../components/ScrambleVisualizer/ScrambleVisualizer";
+import TimerDisplay from "../../features/TimerModule/TimerModule";
+import StatsBlock from "../../features/StatsBlock/StatsBlock";
+import SolvesBlock from "../../features/SolvesBlock/SolvesBlock";
+import ScrambleVisualizer from "../../features/ScrambleVisualizer/ScrambleVisualizer";
 
 const TimerPage: React.FC = () => {
   return (
