@@ -28,11 +28,10 @@ ul {
 li {
   position: relative;
   display: inline-flex;
-  padding-left: 3rem;
+  padding: 0.25rem 0.25rem 0.25rem 3rem;
   line-height: 1.6;
   cursor: pointer;
   transition: padding-left 0.15s ease, color 0.15s ease;
-  margin-bottom: 0.5rem;
   font-size: 2rem;
   text-decoration: none;
   color: var(--color-white);
@@ -73,10 +72,6 @@ li a:active {
 
 li a {
   display: inline-block;
-  transform-origin: center; /* Ensures scaling happens from the center */
+  transform-origin: center;
   transition: transform 0.15s ease-out, color 0.15s ease-out;
-}
-
-li:hover a {
-  transform: scale(1.05);
 }
