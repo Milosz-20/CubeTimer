@@ -1,59 +1,85 @@
 import { useState, useEffect, useRef } from "react";
 
 interface UseTimerProps {
-  onStop?: () => void;
+  onStop?: (finalTime: number) => void;
   holdToReadyDuration?: number;
 }
 
-export const useTimer = ({
-  onStop,
-  holdToReadyDuration = 300,
-}: UseTimerProps) => {
+export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isReady, setIsReady] = useState(false);
-  const intervalRef = useRef<NodeJS.Timeout | null>(null);
-  const timerStartTimeRef = useRef<number>(0);
+  const [isHolding, setIsHolding] = useState(false);
+
   const readyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+  const dateTimerStartTimeRef = useRef<number>(0);
+  const perfStartTimeRef = useRef<number>(0);
+
+  const isRunningRef = useRef(isRunning);
+  const isReadyRef = useRef(isReady);
+  const isHoldingRef = useRef(isHolding);
 
   useEffect(() => {
+    isRunningRef.current = isRunning;
+  }, [isRunning]);
+  useEffect(() => {
+    isReadyRef.current = isReady;
+  }, [isReady]);
+  useEffect(() => {
+    isHoldingRef.current = isHolding;
+  }, [isHolding]);
+
+  // Obsługa timera
+  useEffect(() => {
     if (isRunning) {
-      timerStartTimeRef.current = Date.now();
+      perfStartTimeRef.current = performance.now();
+      dateTimerStartTimeRef.current = Date.now();
+
       intervalRef.current = setInterval(() => {
-        setTime(Date.now() - timerStartTimeRef.current);
+        setTime(Date.now() - dateTimerStartTimeRef.current);
       }, 10);
     } else {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
       }
+      if (perfStartTimeRef.current !== 0) {
+        const perfStopTime = performance.now();
+        const preciseDuration = perfStopTime - perfStartTimeRef.current;
+        setTime(preciseDuration);
+        onStop?.(preciseDuration);
+        perfStartTimeRef.current = 0;
+      }
     }
+
     return () => {
       if (intervalRef.current) {
         clearInterval(intervalRef.current);
       }
     };
-  }, [isRunning]);
+  }, [isRunning, onStop]);
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space" && !event.repeat) {
         event.preventDefault();
-        (document.activeElement as HTMLElement)?.blur();
 
-        if (isRunning) {
+        if (isRunningRef.current) {
           setIsRunning(false);
-          onStop?.();
           setIsReady(false);
+          setIsHolding(false);
           if (readyTimeoutRef.current) {
             clearTimeout(readyTimeoutRef.current);
             readyTimeoutRef.current = null;
           }
         } else {
-          if (!isReady && !readyTimeoutRef.current) {
+          if (!isReadyRef.current && !readyTimeoutRef.current) {
+            setTime(0);
+            setIsHolding(true);
             readyTimeoutRef.current = setTimeout(() => {
-              setTime(0);
               setIsReady(true);
+              setIsHolding(false);
               readyTimeoutRef.current = null;
             }, holdToReadyDuration);
           }
@@ -64,14 +90,14 @@ export const useTimer = ({
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();
-        (document.activeElement as HTMLElement)?.blur();
 
         if (readyTimeoutRef.current) {
           clearTimeout(readyTimeoutRef.current);
           readyTimeoutRef.current = null;
+          setIsHolding(false);
         }
 
-        if (isReady && !isRunning) {
+        if (isReadyRef.current && !isRunningRef.current) {
           setIsReady(false);
           setIsRunning(true);
         }
@@ -88,7 +114,7 @@ export const useTimer = ({
         clearTimeout(readyTimeoutRef.current);
       }
     };
-  }, [isRunning, isReady, onStop, holdToReadyDuration]);
+  }, [holdToReadyDuration]);
 
-  return { time, isRunning, isReady };
+  return { time, isRunning, isReady, isHolding };
 };

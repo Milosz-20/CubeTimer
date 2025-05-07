@@ -6,7 +6,6 @@ interface ActionsProps {
   onGenerate: () => void;
   isCopying: boolean;
   isGenerating: boolean;
-  // Add onLock prop when implementing lock functionality
 }
 
 const Actions: React.FC<ActionsProps> = ({

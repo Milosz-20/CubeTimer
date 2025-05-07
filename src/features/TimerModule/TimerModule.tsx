@@ -10,8 +10,8 @@ import { formatTime } from "@utils/timeFormatter";
 import { useTimer } from "./hooks/useTimer";
 
 const TimerModule: React.FC = () => {
+  const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
-
   const {
     isCopying: isCopyButtonAnimating,
     notificationVisible,
@@ -22,8 +22,17 @@ const TimerModule: React.FC = () => {
   const [isGenerateButtonAnimating, setIsGenerateButtonAnimating] =
     useState(false);
 
-  const { time, isRunning } = useTimer({
-    onStop: generateNewScramble,
+  const handleTimerStop = useCallback(
+    (finalTime: number) => {
+      console.log("Final time: ", finalTime);
+      generateNewScramble();
+    },
+    [generateNewScramble]
+  );
+
+  const { time, isRunning, isReady, isHolding } = useTimer({
+    onStop: handleTimerStop,
+    holdToReadyDuration,
   });
 
   const handleCopyButtonClick = () => {
@@ -44,6 +53,13 @@ const TimerModule: React.FC = () => {
 
   const displayTimeValue = formatTime(time);
 
+  let displayTextColor = "var(--color-white)";
+  if (isHolding) {
+    displayTextColor = "var(--color-red)";
+  } else if (isReady && !isRunning) {
+    displayTextColor = "var(--color-green)";
+  }
+
   return (
     <section className={styles.timerBox}>
       <Scramble text={scramble} />
@@ -53,7 +69,7 @@ const TimerModule: React.FC = () => {
         isCopying={isCopyButtonAnimating}
         isGenerating={isGenerateButtonAnimating}
       />
-      <Display time={displayTimeValue} />
+      <Display time={displayTimeValue} textColor={displayTextColor} />
 
       {notificationVisible && (
         <Notification message="Copied!" onClose={closeNotification} />
