@@ -75,9 +75,9 @@ export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
           }
         } else {
           if (!isReadyRef.current && !readyTimeoutRef.current) {
-            setTime(0);
             setIsHolding(true);
             readyTimeoutRef.current = setTimeout(() => {
+              setTime(0);
               setIsReady(true);
               setIsHolding(false);
               readyTimeoutRef.current = null;

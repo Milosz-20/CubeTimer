@@ -12,6 +12,7 @@ import "./App.css";
 
 const App: React.FC = () => {
   document.title = "CubeTimer";
+
   return (
     <Router>
       <div className="app-layout">

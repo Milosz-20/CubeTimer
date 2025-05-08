@@ -1,6 +1,5 @@
 import React, { useState, useCallback } from "react";
 import styles from "./TimerModule.module.css";
-import Notification from "@components/Notification/Notification";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
 import Scramble from "./components/Scramble/Scramble";
@@ -12,12 +11,8 @@ import { useTimer } from "./hooks/useTimer";
 const TimerModule: React.FC = () => {
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
-  const {
-    isCopying: isCopyButtonAnimating,
-    notificationVisible,
-    copyToClipboard,
-    closeNotification,
-  } = useCopyToClipboard();
+  const { isCopying: isCopyButtonAnimating, copyToClipboard } =
+    useCopyToClipboard();
 
   const [isGenerateButtonAnimating, setIsGenerateButtonAnimating] =
     useState(false);
@@ -70,10 +65,6 @@ const TimerModule: React.FC = () => {
         isGenerating={isGenerateButtonAnimating}
       />
       <Display time={displayTimeValue} textColor={displayTextColor} />
-
-      {notificationVisible && (
-        <Notification message="Copied!" onClose={closeNotification} />
-      )}
     </section>
   );
 };
