@@ -1,0 +1,61 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: var(--color-white);
+  border: none;
+  cursor: pointer;
+  background: none;
+  padding: 0;
+  margin: 0;
+}
+
+.button:hover {
+  transform: scale(1.05);
+}
+
+.button:focus-visible {
+  outline: none;
+}
+
+.icon {
+  width: 2.5rem;
+  aspect-ratio: 1;
+  stroke: var(--color-white);
+  transition: stroke 0.15s ease, transform 0.15s ease;
+}
+
+.button:hover .icon {
+  stroke: var(--color-accent-green-0);
+}
+
+.rotate {
+  animation: rotate 0.3s ease-in-out, shrink 0.3s ease-in-out;
+}
+
+.shrink {
+  animation: shrink 0.2s ease-in-out;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes shrink {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 0.9;
+  }
+  100% {
+    scale: 1;
+  }
+}

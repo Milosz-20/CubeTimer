@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from "react";
+import React, { useCallback } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
@@ -11,11 +11,7 @@ import { useTimer } from "./hooks/useTimer";
 const TimerModule: React.FC = () => {
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
-  const { isCopying: isCopyButtonAnimating, copyToClipboard } =
-    useCopyToClipboard();
-
-  const [isGenerateButtonAnimating, setIsGenerateButtonAnimating] =
-    useState(false);
+  const { copyToClipboard } = useCopyToClipboard();
 
   const handleTimerStop = useCallback(
     (finalTime: number) => {
@@ -37,12 +33,6 @@ const TimerModule: React.FC = () => {
   const handleGenerateButtonClick = useCallback(() => {
     if (!isRunning) {
       generateNewScramble();
-      setIsGenerateButtonAnimating(true);
-      const animationTimer = setTimeout(
-        () => setIsGenerateButtonAnimating(false),
-        400
-      );
-      return () => clearTimeout(animationTimer);
     }
   }, [isRunning, generateNewScramble]);
 
@@ -61,8 +51,6 @@ const TimerModule: React.FC = () => {
       <Actions
         onCopy={handleCopyButtonClick}
         onGenerate={handleGenerateButtonClick}
-        isCopying={isCopyButtonAnimating}
-        isGenerating={isGenerateButtonAnimating}
       />
       <Display time={displayTimeValue} textColor={displayTextColor} />
     </section>
