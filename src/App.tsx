@@ -1,5 +1,3 @@
-/** @format */
-
 import React from "react";
 import {
   BrowserRouter as Router,
@@ -12,11 +10,6 @@ import Timer from "./pages/Timer/TimerPage";
 import Stats from "./pages/Stats/Stats";
 import "./App.css";
 
-/**
- * This component sets up the main layout of the application, including the sidebar and routing.
- *
- * @returns {JSX.Element} Main application component.
- */
 const App: React.FC = () => {
   document.title = "CubeTimer";
 

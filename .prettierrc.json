@@ -10,7 +10,7 @@
   "objectWrap": "collapse",
   "bracketSameLine": false,
   "arrowParens": "always",
-  "insertPragma": true,
+  "insertPragma": false,
   "proseWrap": "always",
   "htmlWhitespaceSensitivity": "css",
   "endOfLine": "crlf",

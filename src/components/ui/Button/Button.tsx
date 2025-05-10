@@ -1,46 +1,15 @@
-/** @format */
-
 import React, { useRef } from "react";
 import styles from "./Button.module.css";
 
-/**
- * Properties for the Button component.
- */
 interface ButtonProps {
-  /**
-   * The action to perform when the button is clicked.
-   */
   action: () => void;
-  /**
-   * The text to display on the button.
-   */
   text?: string;
-  /**
-   * The icon to display on the button.
-   *
-   */
-  //TODO: SVG icons
   icon: React.ReactElement<{ className?: string }>;
-  /**
-   * The animation to apply when the button is clicked.
-   */
   animation?: "shrink" | "rotate" | "bounce" | "custom";
-  /**
-   * Custom keyframes for the animation.
-   */
   animationOptions?: Keyframe[];
-  /**
-   * Timing options for the animation.
-   */
   animationTiming?: KeyframeAnimationOptions;
 }
 
-/**
- * Button component that performs an action when clicked.
- *
- * @param {ButtonProps} props - The properties for the button.
- * @returns {JSX.Element} The Button component.
- */
 const Button: React.FC<ButtonProps> = ({
   action,
   text,
@@ -51,9 +20,6 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
-  /**
-   * Handler for the click event for the button.
-   */
   const handleClick = () => {
     if (buttonRef.current) {
       const animations: Record<string, Keyframe[]> = {

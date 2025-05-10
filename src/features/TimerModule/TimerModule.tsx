@@ -1,5 +1,3 @@
-/** @format */
-
 import React, { useCallback } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
@@ -10,15 +8,6 @@ import Display from "./components/Display/Display";
 import { formatTime } from "@utils/timeFormatter";
 import { useTimer } from "./hooks/useTimer";
 
-/**
- * Timer Module that handles the timer functionality, including scramble generation and time display.
- *
- * @returns {JSX.Element} Timer Module component
- *
- * @see {@link useScramble}
- * @see {@link useCopyToClipboard}
- * @see {@link useTimer}
- */
 const TimerModule: React.FC = () => {
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
