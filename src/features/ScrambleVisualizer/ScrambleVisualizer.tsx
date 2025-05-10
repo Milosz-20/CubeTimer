@@ -1,3 +1,5 @@
+/** @format */
+
 import styles from "@features/ScrambleVisualizer/ScrambleVisualizer.module.css";
 
 /**

@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import styles from "./TimerPage.module.css";
 import TimerDisplay from "../../features/TimerModule/TimerModule";

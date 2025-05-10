@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState, useCallback } from "react";
 import { generateScramble as generate } from "react-rubiks-cube-utils";
 
@@ -16,8 +18,5 @@ export function useScramble(type: string = "3x3") {
     setScramble(newScramble);
   }, [type]);
 
-  return {
-    scramble,
-    generateNewScramble,
-  };
-};
+  return { scramble, generateNewScramble };
+}

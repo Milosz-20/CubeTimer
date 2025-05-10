@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState, useEffect, useRef } from "react";
 
 /**
@@ -152,4 +154,4 @@ export function useTimer({ onStop, holdToReadyDuration }: UseTimerProps) {
   }, [holdToReadyDuration]);
 
   return { time, isRunning, isReady, isHolding };
-};
+}

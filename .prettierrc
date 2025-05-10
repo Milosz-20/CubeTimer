@@ -1,6 +1,20 @@
+# @format
+
 {
   "tabWidth": 2,
   "useTabs": false,
   "semi": true,
-  "singleQuote": false
+  "singleQuote": false,
+  "quoteProps": "consistent",
+  "jsxSingleQuote": false,
+  "trailingComma": "none",
+  "bracketSpacing": true,
+  "objectWrap": "collapse",
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "insertPragma": true,
+  "proseWrap": "always",
+  "htmlWhitespaceSensitivity": "css",
+  "endOfLine": "crlf",
+  "singleAttributePerLine": false
 }

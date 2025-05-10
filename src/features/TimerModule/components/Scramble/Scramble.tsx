@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import styles from "./Scramble.module.css";
 
@@ -13,7 +15,7 @@ interface ScrambleProps {
 
 /**
  * Scramble component to display a scramble string.
- * 
+ *
  * @param {ScrambleProps} props - The props for the component.
  * @returns {JSX.Element} The rendered component.
  */

@@ -1,3 +1,5 @@
+/** @format */
+
 import { useState, useCallback } from "react";
 
 /**
@@ -20,4 +22,4 @@ export function useCopyToClipboard() {
   }, []);
 
   return { isCopying, copyToClipboard };
-};
+}

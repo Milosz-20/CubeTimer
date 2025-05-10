@@ -1,3 +1,5 @@
+/** @format */
+
 import React from "react";
 import styles from "./Actions.module.css";
 import Button from "@components/ui/Button/Button";

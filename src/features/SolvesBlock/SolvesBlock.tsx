@@ -1,3 +1,5 @@
+/** @format */
+
 import styles from "@features/SolvesBlock/SolvesBlock.module.css";
 
 /**

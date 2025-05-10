@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useCallback } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
@@ -32,7 +34,7 @@ const TimerModule: React.FC = () => {
 
   const { time, isRunning, isReady, isHolding } = useTimer({
     onStop: handleTimerStop,
-    holdToReadyDuration,
+    holdToReadyDuration
   });
 
   const handleCopyButtonClick = () => {
