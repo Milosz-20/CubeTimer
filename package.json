@@ -1,7 +1,7 @@
 {
   "name": "cube-timer",
   "version": "0.0.0",
-  "description": "A simple timer for Rubik's Cube enthusiasts.",
+  "description": "Timer for Rubik's cube",
   "homepage": "https://github.com/Milosz-20/CubeTimer#readme",
   "bugs": {
     "url": "https://github.com/Milosz-20/CubeTimer/issues"
