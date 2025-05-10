@@ -1,7 +1,19 @@
 {
   "name": "cube-timer",
-  "private": true,
   "version": "0.0.0",
+  "description": "A simple timer for Rubik's Cube enthusiasts.",
+  "homepage": "https://github.com/Milosz-20/CubeTimer#readme",
+  "bugs": {
+    "url": "https://github.com/Milosz-20/CubeTimer/issues"
+  },
+  "author": "Milosz Karpeta <miloszkarpeta@gmail.com>",
+  "contributors": [
+    "Krzysztof Jurkowski <krzysztof@jurkowski.net.pl>"
+  ],
+  "repository": "github:Milosz-20/CubeTimer",
+  "main": "src/main.tsx",
+  "browser": "index.html",
+  "private": true,
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -39,5 +51,25 @@
     "typescript": "~5.7.3",
     "typescript-eslint": "^8.32.0",
     "vite": "^6.3.5"
-  }
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "bun": ">=1.0.0",
+    "npm": ">=10.0.0",
+    "pnpm": ">=10.0.0",
+    "yarn": ">=4.0.0"
+  },
+  "devEngines": {
+    "runtime": {
+      "name": "bun",
+      "version": ">=1.0.0",
+      "onFail": "error"
+    },
+    "packageManager": {
+      "name": "bun",
+      "version": ">=1.0.0",
+      "onFail": "error"
+    }
+  },
+  "packageManager": "bun@1.2.13"
 }
