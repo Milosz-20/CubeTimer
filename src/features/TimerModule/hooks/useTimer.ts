@@ -1,11 +1,36 @@
 import { useState, useEffect, useRef } from "react";
 
+/**
+ * Custom hook to manage a timer with start, stop, and hold-to-ready functionality.
+ *
+ * @param {Object} props - The properties for the timer.
+ * @param {Function} props.onStop - Callback function to be called when the timer stops.
+ * @param {number} props.holdToReadyDuration - Duration in milliseconds to hold the space key to get ready.
+ * @returns {Object} - The current time, running state, ready state, and holding state of the timer.
+ */
 interface UseTimerProps {
+  /**
+   * Timer stop callback function.
+   *
+   * @param finalTime - Final time in milliseconds when the timer stops.
+   */
   onStop?: (finalTime: number) => void;
+
+  /**
+   * Duration in milliseconds to hold the space key to get ready.
+   */
   holdToReadyDuration?: number;
 }
 
-export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
+/**
+ * Custom hook to manage a timer with start, stop, and hold-to-ready functionality.
+ *
+ * @param props The properties for the timer.
+ * @param props.onStop Callback function to be called when the timer stops.
+ * @param props.holdToReadyDuration Duration in milliseconds to hold the space key to get ready.
+ * @returns The current time, running state, ready state, and holding state of the timer.
+ */
+export function useTimer({ onStop, holdToReadyDuration }: UseTimerProps) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -61,6 +86,11 @@ export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
   }, [isRunning, onStop]);
 
   useEffect(() => {
+    /**
+     * Handles the key down event for the space key.
+     *
+     * @param event triggered keyboard event
+     */
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.code === "Space" && !event.repeat) {
         event.preventDefault();
@@ -87,6 +117,11 @@ export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
       }
     };
 
+    /**
+     * Handles the key up event for the space key.
+     *
+     * @param event triggered keyboard event
+     */
     const handleKeyUp = (event: KeyboardEvent) => {
       if (event.code === "Space") {
         event.preventDefault();

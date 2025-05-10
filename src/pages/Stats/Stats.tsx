@@ -1,6 +1,14 @@
 import React from "react";
 import styles from "./Stats.module.css";
 
+/**
+ * Statistics page
+ *
+ * @returns {JSX.Element} stats page component
+ *
+ * @see {@link TimerDisplay}
+ * @alpha
+ */
 const StatsPage: React.FC = () => {
   return (
     <main className={styles.mainContent}>

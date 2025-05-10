@@ -2,11 +2,26 @@ import React from "react";
 import styles from "./Actions.module.css";
 import Button from "@components/ui/Button/Button";
 
+/**
+ * Properties for the Actions component.
+ */
 interface ActionsProps {
+  /**
+   * Function to call when the copy button is clicked.
+   */
   onCopy: () => void;
+  /**
+   * Function to call when the generate button is clicked.
+   */
   onGenerate: () => void;
 }
 
+/**
+ * Actions component to display buttons for copying and generating.
+ *
+ * @param {ActionsProps} props - The props for the component.
+ * @returns {JSX.Element} The rendered component.
+ */
 const Actions: React.FC<ActionsProps> = ({ onCopy, onGenerate }) => {
   return (
     <div className={styles.options}>

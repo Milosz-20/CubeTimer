@@ -1,6 +1,11 @@
 import { useState, useCallback } from "react";
 
-export const useCopyToClipboard = () => {
+/**
+ * Simple hook to copy text to clipboard.
+ *
+ * @returns isCopying - true if copying to clipboard is in progress, copyToClipboard - function to copy text to clipboard
+ */
+export function useCopyToClipboard() {
   const [isCopying, setIsCopying] = useState(false);
 
   const copyToClipboard = useCallback((text: string) => {

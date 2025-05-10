@@ -5,6 +5,13 @@ import StatsBlock from "../../features/StatsBlock/StatsBlock";
 import SolvesBlock from "../../features/SolvesBlock/SolvesBlock";
 import ScrambleVisualizer from "../../features/ScrambleVisualizer/ScrambleVisualizer";
 
+/**
+ * Main page with the timer and basic stats.
+ *
+ * @returns {JSX.Element} timer page component
+ *
+ * @see {@link TimerDisplay}
+ */
 const TimerPage: React.FC = () => {
   return (
     <main className={styles.container}>
