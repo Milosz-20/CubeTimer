@@ -23,7 +23,7 @@ const TimerModule: React.FC = () => {
 
   const { time, isRunning, isReady, isHolding } = useTimer({
     onStop: handleTimerStop,
-    holdToReadyDuration,
+    holdToReadyDuration
   });
 
   const handleCopyButtonClick = () => {

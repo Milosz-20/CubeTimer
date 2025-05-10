@@ -24,7 +24,9 @@
   width: 2.5rem;
   aspect-ratio: 1;
   stroke: var(--color-white);
-  transition: stroke 0.15s ease, transform 0.15s ease;
+  transition:
+    stroke 0.15s ease,
+    transform 0.15s ease;
 }
 
 .button:hover .icon {
@@ -32,7 +34,9 @@
 }
 
 .rotate {
-  animation: rotate 0.3s ease-in-out, shrink 0.3s ease-in-out;
+  animation:
+    rotate 0.3s ease-in-out,
+    shrink 0.3s ease-in-out;
 }
 
 .shrink {

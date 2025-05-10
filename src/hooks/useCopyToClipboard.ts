@@ -1,6 +1,6 @@
 import { useState, useCallback } from "react";
 
-export const useCopyToClipboard = () => {
+export function useCopyToClipboard() {
   const [isCopying, setIsCopying] = useState(false);
 
   const copyToClipboard = useCallback((text: string) => {
@@ -15,4 +15,4 @@ export const useCopyToClipboard = () => {
   }, []);
 
   return { isCopying, copyToClipboard };
-};
+}

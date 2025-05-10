@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   animation,
   animationOptions,
-  animationTiming,
+  animationTiming
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -26,17 +26,17 @@ const Button: React.FC<ButtonProps> = ({
         shrink: [
           { transform: "scale(1)" },
           { transform: "scale(0.9)" },
-          { transform: "scale(1)" },
+          { transform: "scale(1)" }
         ],
         rotate: [
           { transform: "rotate(0deg)" },
-          { transform: "rotate(360deg)" },
+          { transform: "rotate(360deg)" }
         ],
         bounce: [
           { transform: "translateY(0)" },
           { transform: "translateY(-0.5rem)" },
-          { transform: "translateY(0)" },
-        ],
+          { transform: "translateY(0)" }
+        ]
       };
 
       const keyframes =
@@ -54,7 +54,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button ref={buttonRef} className={styles.button} onClick={handleClick}>
       {React.cloneElement(icon, {
-        className: `${icon.props.className || ""} ${styles.icon}`.trim(),
+        className: `${icon.props.className || ""} ${styles.icon}`.trim()
       })}
       <span className={styles.text}>{text}</span>
     </button>

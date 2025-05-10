@@ -5,7 +5,7 @@ interface UseTimerProps {
   holdToReadyDuration?: number;
 }
 
-export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
+export function useTimer({ onStop, holdToReadyDuration }: UseTimerProps) {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [isReady, setIsReady] = useState(false);
@@ -117,4 +117,4 @@ export const useTimer = ({ onStop, holdToReadyDuration }: UseTimerProps) => {
   }, [holdToReadyDuration]);
 
   return { time, isRunning, isReady, isHolding };
-};
+}

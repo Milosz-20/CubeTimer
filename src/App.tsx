@@ -3,7 +3,7 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
+  Navigate
 } from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Timer from "./pages/Timer/TimerPage";
