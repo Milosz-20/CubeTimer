@@ -1,16 +1,21 @@
 import React, { useCallback } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
-import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
+import { useCopyToClipboard } from "@pages/hooks/useCopyToClipboard";
 import Scramble from "./components/Scramble/Scramble";
 import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
 import { formatTime } from "@utils/timeFormatter";
 import { useTimer } from "./hooks/useTimer";
+import { useDispatch } from "react-redux";
+import { addNotification } from "@state/notifications/notificationsSlice";
+import { trimToWords } from "@utils/timeFormatter";
 
 const TimerModule: React.FC = () => {
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
+
+  const dispatch = useDispatch();
   const { copyToClipboard } = useCopyToClipboard();
 
   const handleTimerStop = useCallback(
@@ -28,11 +33,31 @@ const TimerModule: React.FC = () => {
 
   const handleCopyButtonClick = () => {
     copyToClipboard(scramble);
+
+    const preview = scramble.split(/\s+/).slice(0, 3).join(" ") + " . . .";
+
+    dispatch(
+      addNotification({
+        id: Date.now().toString(),
+        message: `Copied scramble: ${preview}`,
+        type: "success",
+        lifetime: 5000
+      })
+    );
   };
 
   const handleGenerateButtonClick = useCallback(() => {
     if (!isRunning) {
       generateNewScramble();
+
+      dispatch(
+        addNotification({
+          id: Date.now().toString(),
+          message: "Scramble generated!",
+          type: "warning",
+          lifetime: 3000
+        })
+      );
     }
   }, [isRunning, generateNewScramble]);
 

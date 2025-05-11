@@ -47,6 +47,7 @@ const Actions: React.FC<ActionsProps> = ({ onCopy, onGenerate }) => {
             />
           </svg>
         }
+        animationTiming={{ duration: 150 }}
         animation="shrink"
       />
       <Button
@@ -67,7 +68,7 @@ const Actions: React.FC<ActionsProps> = ({ onCopy, onGenerate }) => {
           </svg>
         }
         animation="rotate"
-        animationTiming={{ duration: 325 }}
+        animationTiming={{ duration: 300 }}
       />
     </div>
   );

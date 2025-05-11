@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   icon,
   animation,
   animationOptions,
-  animationTiming
+  animationTiming // takes object {duration: number} as param
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 

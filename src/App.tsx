@@ -5,6 +5,7 @@ import {
   Route,
   Navigate
 } from "react-router-dom";
+import Notification from "@components/Notification/Notification";
 import Sidebar from "./components/Sidebar/Sidebar";
 import Timer from "./pages/Timer/TimerPage";
 import Stats from "./pages/Stats/Stats";
@@ -15,6 +16,7 @@ const App: React.FC = () => {
 
   return (
     <Router>
+      <Notification />
       <div className="app-layout">
         <Sidebar />
         <div className="main-content">
