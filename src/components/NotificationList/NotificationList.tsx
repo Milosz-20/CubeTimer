@@ -29,9 +29,11 @@ const NotificationList: React.FC = () => {
     <div className={styles.container}>
       {notifications.map((notification) => (
         <Notification
+          key={notification.id}
           id={notification.id}
           message={notification.message}
           type={notification.type}
+          icon="archive"
           onRemove={handleRemove}
         />
       ))}

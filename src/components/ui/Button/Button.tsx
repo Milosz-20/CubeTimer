@@ -1,22 +1,27 @@
 import React, { useRef } from "react";
 import styles from "./Button.module.css";
+import { Icon, IconName } from "../Icon/Icon";
 
 interface ButtonProps {
   action: () => void;
   text?: string;
-  icon: React.ReactElement<{ className?: string }>;
+  icon: IconName;
   animation?: "shrink" | "rotate" | "bounce" | "custom";
   animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
+  iconSize?: number;
+  iconColor?: string;
 }
 
 const Button: React.FC<ButtonProps> = ({
   action,
   text,
   icon,
+  iconSize = 24,
+  iconColor = "white",
   animation,
   animationOptions,
-  animationTiming // takes object {duration: number} as param
+  animationTiming
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
@@ -53,10 +58,8 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button ref={buttonRef} className={styles.button} onClick={handleClick}>
-      {React.cloneElement(icon, {
-        className: `${icon.props.className || ""} ${styles.icon}`.trim()
-      })}
-      <span className={styles.text}>{text}</span>
+      <Icon name={icon} size={iconSize} color={iconColor} />
+      {text && <span className={styles.text}>{text}</span>}
     </button>
   );
 };
