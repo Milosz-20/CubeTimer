@@ -367,13 +367,6 @@
       "sha512-9LfmxKTb1v+vUS1/emSk1f5ePmTLkb9Le9AxOB5T0XM59EUumwcS45z05h7aiZx3GI0Bl7mjb3FMEglYj+acuQ=="
     ],
 
-    "@neondatabase/serverless": [
-      "@neondatabase/serverless@1.0.0",
-      "",
-      { "dependencies": { "@types/node": "^22.10.2", "@types/pg": "^8.8.0" } },
-      "sha512-XWmEeWpBXIoksZSDN74kftfTnXFEGZ3iX8jbANWBc+ag6dsiQuvuR4LgB0WdCOKMb5AQgjqgufc0TgAsZubUYw=="
-    ],
-
     "@nodelib/fs.scandir": [
       "@nodelib/fs.scandir@2.1.5",
       "",
@@ -708,19 +701,6 @@
       "",
       { "dependencies": { "undici-types": "~6.21.0" } },
       "sha512-wIX2aSZL5FE+MR0JlvF87BNVrtFWf6AE6rxSE9X7OwnVvoyCQjpzSRJ+M87se/4QCkCiebQAqrJ0y6fwIyi7nw=="
-    ],
-
-    "@types/pg": [
-      "@types/pg@8.15.1",
-      "",
-      {
-        "dependencies": {
-          "@types/node": "*",
-          "pg-protocol": "*",
-          "pg-types": "^4.0.1"
-        }
-      },
-      "sha512-YKHrkGWBX5+ivzvOQ66I0fdqsQTsvxqM0AGP2i0XrVZ9DP5VA/deEbTf7VuLPGpY7fJB9uGbkZ6KjVhuHcrTkQ=="
     ],
 
     "@types/react": [
@@ -1324,13 +1304,6 @@
       "",
       { "dependencies": { "esutils": "^2.0.2" } },
       "sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw=="
-    ],
-
-    "dotenv": [
-      "dotenv@16.5.0",
-      "",
-      {},
-      "sha512-m/C+AwOAr9/W1UOIZUo232ejMNnJAJtYQjUbHoNTBNTJSvqzzDh7vnrei3o3r3m9blf6ZoDkvcw0VmozNRFJxg=="
     ],
 
     "dunder-proto": [
@@ -2676,13 +2649,6 @@
       "sha512-gXah6aZrcUxjWg2zR2MwouP2eHlCBzdV4pygudehaKXSGW4v2AsRQUK+lwwXhii6KFZcunEnmSUoYp5CXibxtA=="
     ],
 
-    "obuf": [
-      "obuf@1.1.2",
-      "",
-      {},
-      "sha512-PX1wu0AmAdPqOL1mWhqmlOd8kOIZQwGZw6rh7uby9fTc5lhaOWFLX3I6R1hrF9k3zUY40e6igsLGkDXK92LJNg=="
-    ],
-
     "on-finished": [
       "on-finished@2.4.1",
       "",
@@ -2782,44 +2748,6 @@
       "sha512-TdrF7fW9Rphjq4RjrW0Kp2AW0Ahwu9sRGTkS6bvDi0SCwZlEZYmcfDbEsTz8RVk0EHIS/Vd1bv3JhG+1xZuAyQ=="
     ],
 
-    "pg-int8": [
-      "pg-int8@1.0.1",
-      "",
-      {},
-      "sha512-WCtabS6t3c8SkpDBUlb1kjOs7l66xsGdKpIPZsg4wR+B3+u9UAum2odSsF9tnvxg80h4ZxLWMy4pRjOsFIqQpw=="
-    ],
-
-    "pg-numeric": [
-      "pg-numeric@1.0.2",
-      "",
-      {},
-      "sha512-BM/Thnrw5jm2kKLE5uJkXqqExRUY/toLHda65XgFTBTFYZyopbKjBe29Ii3RbkvlsMoFwD+tHeGaCjjv0gHlyw=="
-    ],
-
-    "pg-protocol": [
-      "pg-protocol@1.9.5",
-      "",
-      {},
-      "sha512-DYTWtWpfd5FOro3UnAfwvhD8jh59r2ig8bPtc9H8Ds7MscE/9NYruUQWFAOuraRl29jwcT2kyMFQ3MxeaVjUhg=="
-    ],
-
-    "pg-types": [
-      "pg-types@4.0.2",
-      "",
-      {
-        "dependencies": {
-          "pg-int8": "1.0.1",
-          "pg-numeric": "1.0.2",
-          "postgres-array": "~3.0.1",
-          "postgres-bytea": "~3.0.0",
-          "postgres-date": "~2.1.0",
-          "postgres-interval": "^3.0.0",
-          "postgres-range": "^1.1.1"
-        }
-      },
-      "sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng=="
-    ],
-
     "picocolors": [
       "picocolors@1.1.1",
       "",
@@ -2859,41 +2787,6 @@
         }
       },
       "sha512-dle9A3yYxlBSrt8Fu+IpjGT8SY8hN0mlaA6GY8t0P5PjIOZemULz/E2Bnm/2dcUOena75OTNkHI76uZBNUUq3A=="
-    ],
-
-    "postgres-array": [
-      "postgres-array@3.0.4",
-      "",
-      {},
-      "sha512-nAUSGfSDGOaOAEGwqsRY27GPOea7CNipJPOA7lPbdEpx5Kg3qzdP0AaWC5MlhTWV9s4hFX39nomVZ+C4tnGOJQ=="
-    ],
-
-    "postgres-bytea": [
-      "postgres-bytea@3.0.0",
-      "",
-      { "dependencies": { "obuf": "~1.1.2" } },
-      "sha512-CNd4jim9RFPkObHSjVHlVrxoVQXz7quwNFpz7RY1okNNme49+sVyiTvTRobiLV548Hx/hb1BG+iE7h9493WzFw=="
-    ],
-
-    "postgres-date": [
-      "postgres-date@2.1.0",
-      "",
-      {},
-      "sha512-K7Juri8gtgXVcDfZttFKVmhglp7epKb1K4pgrkLxehjqkrgPhfG6OO8LHLkfaqkbpjNRnra018XwAr1yQFWGcA=="
-    ],
-
-    "postgres-interval": [
-      "postgres-interval@3.0.0",
-      "",
-      {},
-      "sha512-BSNDnbyZCXSxgA+1f5UU2GmwhoI0aU5yMxRGO8CdFEcY2BQF9xm/7MqKnYoM1nJDk8nONNWDk9WeSmePFhQdlw=="
-    ],
-
-    "postgres-range": [
-      "postgres-range@1.1.4",
-      "",
-      {},
-      "sha512-i/hbxIE9803Alj/6ytL7UHQxRvZkI9O4Sy+J3HGc4F4oo/2eQAjTSNJ0bfxyse3bH0nuVesCk+3IRLaMtG3H6w=="
     ],
 
     "prelude-ls": [
@@ -3976,3 +3869,4 @@
     ]
   }
 }
+

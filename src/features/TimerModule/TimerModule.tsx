@@ -1,15 +1,14 @@
 import React, { useCallback } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
-import { useCopyToClipboard } from "@pages/hooks/useCopyToClipboard";
+import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
 import Scramble from "./components/Scramble/Scramble";
 import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
-import { formatTime } from "@utils/timeFormatter";
+import { formatTime } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch } from "react-redux";
 import { addNotification } from "@state/notifications/notificationsSlice";
-import { trimToWords } from "@utils/timeFormatter";
 
 const TimerModule: React.FC = () => {
   const holdToReadyDuration = 300;
@@ -40,7 +39,7 @@ const TimerModule: React.FC = () => {
       addNotification({
         id: Date.now().toString(),
         message: `Copied scramble: ${preview}`,
-        type: "success",
+        type: "info",
         lifetime: 5000
       })
     );
@@ -54,8 +53,8 @@ const TimerModule: React.FC = () => {
         addNotification({
           id: Date.now().toString(),
           message: "Scramble generated!",
-          type: "warning",
-          lifetime: 3000
+          type: "success",
+          lifetime: 5000
         })
       );
     }
