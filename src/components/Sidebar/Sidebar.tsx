@@ -11,7 +11,7 @@ const Sidebar: React.FC = () => {
     setShowHistory((prev) => !prev);
   };
   return (
-    <aside className={styles.container}>
+    <aside className={styles.sidebar}>
       <div>
         <h2 className={styles.title}>Cube Timer</h2>
         <Button
