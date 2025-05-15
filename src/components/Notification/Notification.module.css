@@ -4,8 +4,8 @@
   justify-content: space-between;
   align-items: center; /* Align content vertically */
   gap: 1rem;
-  padding: 1rem 1.5rem;
-  border-radius: 0.75rem;
+  padding: 1rem;
+  border-radius: 1rem;
   color: var(--color-white);
   font-size: 1.4rem;
   width: 28rem; /* Slightly wider for better readability */

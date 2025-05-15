@@ -25,22 +25,28 @@ const NotificationHistory: React.FC = () => {
 
   return (
     <div className={styles.container}>
-      <Button
-        action={handleRemoveAll}
-        icon="bin"
-        animation="rotate"
-        animationTiming={{ duration: 300 }}
-      />
-      {notifications.map((notification) => (
-        <Notification
-          key={notification.id}
-          id={notification.id}
-          message={notification.message}
-          type={notification.type}
+      <div className={styles.title}>
+        <p>Notification history</p>
+        <Button
+          action={handleRemoveAll}
           icon="bin"
-          onRemove={handleRemove}
+          text="Clear"
+          animation="bounce"
+          animationTiming={{ duration: 300 }}
         />
-      ))}
+      </div>
+      <div className={styles.notificationsList}>
+        {notifications.map((notification) => (
+          <Notification
+            key={notification.id}
+            id={notification.id}
+            message={notification.message}
+            type={notification.type}
+            icon="bin"
+            onRemove={handleRemove}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -1,21 +1,21 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "@components/Sidebar/Sidebar.module.css";
 import { Link } from "react-router-dom";
 import Button from "@components/ui/Button/Button";
-import NotificationHistory from "@components/NotificationHistory/NotificationHistory";
+import { toggleHistory } from "@state/notifications/notificationsSlice";
+import { useDispatch } from "react-redux";
 
 const Sidebar: React.FC = () => {
-  const [showHistory, setShowHistory] = useState(false);
+  const dispatch = useDispatch();
 
-  const handleToggleHistory = () => {
-    setShowHistory((prev) => !prev);
-  };
   return (
     <aside className={styles.sidebar}>
-      <div>
-        <h2 className={styles.title}>Cube Timer</h2>
+      <div className={styles.title}>
+        <h2>Cube Timer</h2>
         <Button
-          action={handleToggleHistory}
+          action={() => {
+            dispatch(toggleHistory());
+          }}
           icon="bell"
           animation="bounce"
           animationTiming={{ duration: 200 }}
@@ -32,11 +32,6 @@ const Sidebar: React.FC = () => {
           <Link to="/settings">Settings</Link>
         </li>
       </ul>
-      {showHistory && (
-        <div style={{ marginTop: "1rem" }}>
-          <NotificationHistory />
-        </div>
-      )}
     </aside>
   );
 };

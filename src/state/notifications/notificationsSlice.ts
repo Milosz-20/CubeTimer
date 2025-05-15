@@ -10,11 +10,13 @@ interface Notification {
 interface NotificationsState {
   notificationList: Notification[];
   notificationHistory: Notification[];
+  notifHistoryVisibility: boolean;
 }
 
 const initialState: NotificationsState = {
   notificationList: [],
-  notificationHistory: []
+  notificationHistory: [],
+  notifHistoryVisibility: false
 };
 
 const notificationsSlice = createSlice({
@@ -41,6 +43,9 @@ const notificationsSlice = createSlice({
     // removes all notifs from history
     removeAllNotifications: (state) => {
       state.notificationHistory = [];
+    },
+    toggleHistory: (state) => {
+      state.notifHistoryVisibility = !state.notifHistoryVisibility;
     }
   }
 });
@@ -49,7 +54,8 @@ export const {
   addNotification,
   archiveNotification,
   removeNotification,
-  removeAllNotifications
+  removeAllNotifications,
+  toggleHistory
 } = notificationsSlice.actions;
 
 export default notificationsSlice.reducer;

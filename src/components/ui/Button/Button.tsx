@@ -58,8 +58,8 @@ const Button: React.FC<ButtonProps> = ({
 
   return (
     <button ref={buttonRef} className={styles.button} onClick={handleClick}>
-      <Icon name={icon} size={iconSize} color={iconColor} />
       {text && <span className={styles.text}>{text}</span>}
+      <Icon name={icon} size={iconSize} color={iconColor} />
     </button>
   );
 };
