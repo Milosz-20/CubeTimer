@@ -5,7 +5,7 @@ import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
 import Scramble from "./components/Scramble/Scramble";
 import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
-import { formatTime } from "@utils/textFormatter";
+import { formatTime, trimToWords } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch, useSelector } from "react-redux";
 import { addNotification } from "@state/notificationsSlice";
@@ -51,7 +51,7 @@ const TimerModule: React.FC = () => {
   const handleCopyButtonClick = () => {
     copyToClipboard(scramble);
 
-    const preview = scramble.split(/\s+/).slice(0, 3).join(" ") + " . . .";
+    const preview = trimToWords(scramble, 5) + " . . .";
 
     dispatch(
       addNotification({
