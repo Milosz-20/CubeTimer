@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import notificationReducer from "./notifications/notificationsSlice";
+import notificationReducer from "./notificationsSlice";
+import scrambleReducer from "./cubeSlice";
 
 export const store = configureStore({
-  reducer: { notifications: notificationReducer }
+  reducer: { notifications: notificationReducer, scramble: scrambleReducer }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

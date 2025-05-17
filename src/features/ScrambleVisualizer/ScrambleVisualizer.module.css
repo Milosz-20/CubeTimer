@@ -3,5 +3,23 @@
   height: 100%;
   margin-left: 1rem;
   border-radius: 1.5rem;
-  background: var(--color-primary-dark-3);
+  background: var(--color-primary-dark-1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container div {
+  transition: all 0.2s ease;
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeInAnim 0.7s ease forwards;
+}
+
+@keyframes fadeInAnim {
+  to {
+    opacity: 1;
+  }
 }

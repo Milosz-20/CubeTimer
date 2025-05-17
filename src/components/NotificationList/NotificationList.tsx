@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@state/store";
-import { archiveNotification } from "@state/notifications/notificationsSlice";
+import { archiveNotification } from "@state/notificationsSlice";
 import styles from "./NotificationList.module.css";
 import Notification from "@components/Notification/Notification";
 

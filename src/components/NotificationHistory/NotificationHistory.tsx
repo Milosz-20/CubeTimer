@@ -4,7 +4,7 @@ import { RootState } from "@state/store";
 import {
   removeAllNotifications,
   removeNotification
-} from "@state/notifications/notificationsSlice";
+} from "@state/notificationsSlice";
 import styles from "./NotificationHistory.module.css";
 import Notification from "@components/Notification/Notification";
 import Button from "@components/ui/Button/Button";

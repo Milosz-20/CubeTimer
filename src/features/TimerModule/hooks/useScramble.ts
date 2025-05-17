@@ -1,13 +1,26 @@
-import { useState, useCallback } from "react";
-import { generateScramble as generate } from "react-rubiks-cube-utils";
+import { setCube, setScramble } from "@state/cubeSlice";
+import { useCallback } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  generateScramble as generate,
+  applyScramble,
+  Cube
+} from "react-rubiks-cube-utils";
+import { RootState } from "@state/store";
 
 export function useScramble(type: string = "3x3") {
-  const [scramble, setScramble] = useState<string>(() => generate({ type }));
+  const scramble = useSelector((state: RootState) => state.scramble.scramble);
+  const dispatch = useDispatch();
 
   const generateNewScramble = useCallback(() => {
     const newScramble: string = generate({ type });
-    setScramble(newScramble);
-  }, [type]);
+    dispatch(setScramble(newScramble));
+    const scrambledCube: Cube = applyScramble({
+      type: type,
+      scramble: newScramble
+    });
+    dispatch(setCube(scrambledCube));
+  }, [type, dispatch]);
 
   return { scramble, generateNewScramble };
 }

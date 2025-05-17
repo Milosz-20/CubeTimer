@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
@@ -8,14 +8,19 @@ import Display from "./components/Display/Display";
 import { formatTime } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch } from "react-redux";
-import { addNotification } from "@state/notifications/notificationsSlice";
+import { addNotification } from "@state/notificationsSlice";
 
 const TimerModule: React.FC = () => {
+  const dispatch = useDispatch();
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
-
-  const dispatch = useDispatch();
   const { copyToClipboard } = useCopyToClipboard();
+
+  useEffect(() => {
+    if (!scramble) {
+      generateNewScramble();
+    }
+  }, [scramble, generateNewScramble]);
 
   const handleTimerStop = useCallback(
     (finalTime: number) => {
@@ -48,15 +53,6 @@ const TimerModule: React.FC = () => {
   const handleGenerateButtonClick = useCallback(() => {
     if (!isRunning) {
       generateNewScramble();
-
-      dispatch(
-        addNotification({
-          id: Date.now().toString(),
-          message: "Scramble generated!",
-          type: "success",
-          lifetime: 5000
-        })
-      );
     }
   }, [isRunning, generateNewScramble]);
 
