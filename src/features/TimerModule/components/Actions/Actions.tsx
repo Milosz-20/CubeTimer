@@ -3,16 +3,23 @@ import styles from "./Actions.module.css";
 import Button from "@components/ui/Button/Button";
 
 interface ActionsProps {
+  onLock: () => void;
   onCopy: () => void;
   onGenerate: () => void;
+  isScrambleLocked: boolean;
 }
 
-const Actions: React.FC<ActionsProps> = ({ onCopy, onGenerate }) => {
+const Actions: React.FC<ActionsProps> = ({
+  onLock,
+  onCopy,
+  onGenerate,
+  isScrambleLocked
+}) => {
   return (
     <div className={styles.options}>
       <Button
-        action={onCopy}
-        icon="unlocked"
+        action={onLock}
+        icon={isScrambleLocked ? "locked" : "unlocked"}
         animation="bounce"
         animationTiming={{ duration: 225 }}
       />

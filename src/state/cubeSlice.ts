@@ -9,7 +9,7 @@ interface cubeState {
 const initialState: cubeState = { cube: null, scramble: "" };
 
 const cubeSlice = createSlice({
-  name: "scramble",
+  name: "cube",
   initialState,
   reducers: {
     setCube(state, action: PayloadAction<Cube>) {

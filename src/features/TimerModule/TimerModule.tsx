@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
@@ -7,14 +7,19 @@ import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
 import { formatTime } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addNotification } from "@state/notificationsSlice";
+import { RootState } from "@state/store";
+import { setIsScrambleLocked } from "@state/timerSlice";
 
 const TimerModule: React.FC = () => {
   const dispatch = useDispatch();
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
   const { copyToClipboard } = useCopyToClipboard();
+  const isScrambleLocked = useSelector(
+    (state: RootState) => state.timer.isScrambleLocked
+  );
 
   useEffect(() => {
     if (!scramble) {
@@ -25,10 +30,18 @@ const TimerModule: React.FC = () => {
   const handleTimerStop = useCallback(
     (finalTime: number) => {
       console.log("Final time: ", finalTime);
-      generateNewScramble();
+      console.log(isScrambleLocked);
+      if (!isScrambleLocked) {
+        generateNewScramble();
+      }
     },
-    [generateNewScramble]
+    [generateNewScramble, isScrambleLocked]
   );
+
+  const handleToggleLock = () => {
+    dispatch(setIsScrambleLocked(!isScrambleLocked));
+    console.log(isScrambleLocked);
+  };
 
   const { time, isRunning, isReady, isHolding } = useTimer({
     onStop: handleTimerStop,
@@ -51,10 +64,10 @@ const TimerModule: React.FC = () => {
   };
 
   const handleGenerateButtonClick = useCallback(() => {
-    if (!isRunning) {
+    if (!isRunning && !isScrambleLocked) {
       generateNewScramble();
     }
-  }, [isRunning, generateNewScramble]);
+  }, [isRunning, generateNewScramble, isScrambleLocked]);
 
   const displayTimeValue = formatTime(time);
 
@@ -69,8 +82,10 @@ const TimerModule: React.FC = () => {
     <section className={styles.timerBox}>
       <Scramble text={scramble} />
       <Actions
+        onLock={handleToggleLock}
         onCopy={handleCopyButtonClick}
         onGenerate={handleGenerateButtonClick}
+        isScrambleLocked={isScrambleLocked}
       />
       <Display time={displayTimeValue} textColor={displayTextColor} />
     </section>
