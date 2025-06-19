@@ -7,7 +7,7 @@ Timer for Rubik's cube
 To run local development server run
 
 ```bash
-bun dev
+turbo run dev
 ```
 
 ## 🔄 Commit Messages
