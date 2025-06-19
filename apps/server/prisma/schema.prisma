@@ -41,6 +41,7 @@ model Solve {
 model User {
   id            Int        @id @default(autoincrement())
   username      String     @unique @db.VarChar(50)
+  displayName   String?    @db.VarChar(50)
   email         String     @unique @db.VarChar(100)
   passwordHash  String
   createdAt     DateTime?  @default(now()) @db.Timestamp(6)
