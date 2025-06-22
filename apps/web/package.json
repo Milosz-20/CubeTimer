@@ -7,9 +7,6 @@
     "url": "https://github.com/Milosz-20/CubeTimer/issues"
   },
   "author": "Milosz Karpeta <miloszkarpeta@gmail.com>",
-  "contributors": [
-    "Krzysztof Jurkowski <krzysztof@jurkowski.net.pl>"
-  ],
   "repository": "github:Milosz-20/CubeTimer",
   "main": "src/main.tsx",
   "browser": "index.html",

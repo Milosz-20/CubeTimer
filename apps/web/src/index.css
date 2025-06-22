@@ -15,14 +15,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --color-primary-dark-0: #121212;
-  --color-primary-dark-1: #1e1e1e;
-  --color-primary-dark-2: #212121;
-  --color-primary-dark-3: #232323;
-  --color-primary-dark-4: #282828;
-  --color-primary-dark-5: #2a2a2a;
+  --bg-dark-0: oklch(0.18 0 0);
+  --bg-dark-1: oklch(0.22 0 0);
+  --bg-dark-2: oklch(0.23 0 0);
+  --bg-dark-3: oklch(0.24 0 0);
+  --bg-dark-4: oklch(0.26 0 0);
+  --bg-dark-5: oklch(0.27 0 0);
 
-  --color-white: #efe9f4;
+  --text: oklch(0.96 0.01 299);
+
   --color-red: #f53029;
   --color-green: #18ea4c;
   --color-yellow: #f2e238;
