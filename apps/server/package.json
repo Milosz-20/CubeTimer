@@ -17,7 +17,12 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
-    "test:e2e": "jest --watch --no-cache --config ./test/jest-e2e.json"
+    "prisma:test:deploy": "bunx dotenv -e .env.test -- prisma migrate deploy",
+    "db:test:rm": "docker compose down test-db",
+    "db:test:up": "docker compose up test-db -d",
+    "db:test:restart": "powershell -ExecutionPolicy Bypass -File scripts/test-db-restart.ps1",
+    "pretest:e2e": "bun run db:test:restart",
+    "test:e2e": "bunx dotenv -e .env.test -- jest --watch --no-cache --config ./test/jest-e2e.json"
   },
   "dependencies": {
     "@nestjs/common": "^11.1.3",

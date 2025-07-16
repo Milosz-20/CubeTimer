@@ -1,0 +1,13 @@
+services:
+  test-db:
+    image: postgres:latest
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: milosz
+      POSTGRES_PASSWORD: 123
+      POSTGRES_DB: testdb
+    networks:
+      - cubetimer
+networks:
+  cubetimer:
