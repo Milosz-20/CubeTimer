@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./TimerPage.module.css";
-import TimerModule from "../../features/TimerModule/TimerModule";
-import StatsBlock from "../../features/StatsBlock/StatsBlock";
-import SolvesBlock from "../../features/SolvesBlock/SolvesBlock";
-import ScrambleVisualizer from "../../features/ScrambleVisualizer/ScrambleVisualizer";
+import { TimerModule } from "@features/TimerModule";
+import { StatsBlock } from "@features/StatsBlock";
+import { SolvesBlock } from "@features/SolvesBlock";
+import { ScrambleVisualiser } from "@features/ScrambleVisualiser";
 
 const TimerPage: React.FC = () => {
   return (
@@ -14,7 +14,7 @@ const TimerPage: React.FC = () => {
       <div className={styles.stats}>
         <SolvesBlock />
         <StatsBlock />
-        <ScrambleVisualizer />
+        <ScrambleVisualiser />
       </div>
     </main>
   );

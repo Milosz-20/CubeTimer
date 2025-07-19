@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Scramble.module.css";
 import { useSelector } from "react-redux";
-import { RootState } from "@state/store";
+import { RootState } from "store/store";
 
 interface ScrambleProps {
   text: string;

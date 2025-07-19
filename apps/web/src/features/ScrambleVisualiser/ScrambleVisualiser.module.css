@@ -3,7 +3,7 @@
   height: 100%;
   margin-left: 1rem;
   border-radius: 1.5rem;
-  background: var(--color-primary-dark-1);
+  background-color: var(--bg-dark-1);
   display: flex;
   justify-content: center;
   align-items: center;

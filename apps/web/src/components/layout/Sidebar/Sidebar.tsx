@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "@components/Sidebar/Sidebar.module.css";
+import styles from "@components/layout/Sidebar/Sidebar.module.css";
 import { Link } from "react-router-dom";
 import Button from "@components/ui/Button/Button";
-import { toggleHistory } from "@state/notificationsSlice";
+import { toggleHistory } from "@store/slices/notificationsSlice";
 import { useDispatch } from "react-redux";
 
 const Sidebar: React.FC = () => {

@@ -1,12 +1,12 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "@state/store";
+import { RootState } from "@store/store";
 import {
   removeAllNotifications,
   removeNotification
-} from "@state/notificationsSlice";
+} from "@store/slices/notificationsSlice";
 import styles from "./NotificationHistory.module.css";
-import Notification from "@components/Notification/Notification";
+import Notification from "@components/feedback/Notification/Notification";
 import Button from "@components/ui/Button/Button";
 
 const NotificationHistory: React.FC = () => {

@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import notificationReducer from "./notificationsSlice";
-import scrambleReducer from "./cubeSlice";
-import timerReducer from "./timerSlice";
+import notificationReducer from "./slices/notificationsSlice";
+import scrambleReducer from "./slices/cubeSlice";
+import timerReducer from "./slices/timerSlice";
 
 export const store = configureStore({
   reducer: {

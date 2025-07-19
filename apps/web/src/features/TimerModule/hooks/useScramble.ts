@@ -1,4 +1,4 @@
-import { setCube, setScramble } from "@state/cubeSlice";
+import { setCube, setScramble } from "@store/slices/cubeSlice";
 import { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -6,7 +6,7 @@ import {
   applyScramble,
   Cube
 } from "react-rubiks-cube-utils";
-import { RootState } from "@state/store";
+import { RootState } from "store/store";
 
 export function useScramble(type: string = "3x3") {
   const scramble = useSelector((state: RootState) => state.scramble.scramble);

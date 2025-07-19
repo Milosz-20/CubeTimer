@@ -1,8 +1,9 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "jsx": "react-jsx",
     "module": "CommonJS",
-    "lib": ["ES2020"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "outDir": "dist",
     "rootDir": "src",
     "emitDecoratorMetadata": true,
@@ -14,7 +15,8 @@
       "@hooks/*": ["hooks/*"],
       "@pages/*": ["pages/*"],
       "@utils/*": ["utils/*"],
-      "@state/*": ["state/*"]
+      "@store/*": ["store/*"],
+      "@app/*": ["app/*"]
     }
   },
   "include": ["src"],

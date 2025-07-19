@@ -32,7 +32,7 @@ ul {
   gap: 0.5rem;
 }
 
-li {
+.listItem {
   position: relative;
   display: inline-flex;
   padding: 0.25rem 0.25rem 0.25rem 3rem;
@@ -47,7 +47,7 @@ li {
   font-weight: 400;
 }
 
-li::before {
+.listItem::before {
   content: "";
   display: block;
   width: 0.9rem;
@@ -63,25 +63,25 @@ li::before {
     background-color 0.15s ease;
 }
 
-li:hover {
+.listItem:hover {
   padding-left: 3.5rem;
   color: var(--color-accent-green-0);
 }
 
-li:hover::before {
+.listItem:hover::before {
   transform: translateY(-50%) rotate(135deg) scale(1.2);
   background-color: var(--color-accent-green-0);
 }
 
-li a:link,
-li a:visited,
-li a:hover,
-li a:active {
+.listItem a:link,
+.listItem a:visited,
+.listItem a:hover,
+.listItem a:active {
   color: inherit;
   text-decoration: none;
 }
 
-li a {
+.listItem a {
   display: inline-block;
   transform-origin: center;
   transition:

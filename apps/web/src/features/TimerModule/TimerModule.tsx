@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
@@ -8,9 +8,9 @@ import Display from "./components/Display/Display";
 import { formatTime, trimToWords } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch, useSelector } from "react-redux";
-import { addNotification } from "@state/notificationsSlice";
-import { RootState } from "@state/store";
-import { setIsScrambleLocked } from "@state/timerSlice";
+import { addNotification } from "@store/slices/notificationsSlice";
+import { RootState } from "@store/store";
+import { setIsScrambleLocked } from "@store/slices/timerSlice";
 
 const TimerModule: React.FC = () => {
   const dispatch = useDispatch();

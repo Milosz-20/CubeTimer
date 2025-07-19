@@ -1,7 +1,7 @@
-import styles from "@features/ScrambleVisualizer/ScrambleVisualizer.module.css";
+import styles from "./ScrambleVisualiser.module.css";
 import { DisplayCube } from "react-rubiks-cube-utils";
 import { useSelector } from "react-redux";
-import { RootState } from "@state/store";
+import { RootState } from "store/store";
 import { useEffect, useRef } from "react";
 
 const colorMap: Record<string, string> = {
@@ -13,7 +13,7 @@ const colorMap: Record<string, string> = {
   orange: "rgb(255, 152, 38)"
 };
 
-export default function ScrambleVisualizer() {
+export default function ScrambleVisualiser() {
   const cube = useSelector((state: RootState) => state.scramble.cube);
   const cubeRef = useRef<HTMLDivElement>(null);
 
