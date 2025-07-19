@@ -5,7 +5,9 @@ import { Icon, IconName } from "../Icon/Icon";
 interface ButtonProps {
   action: () => void;
   text?: string;
-  icon: IconName;
+  icon?: IconName;
+  size?: "noSpacing" | "compact" | "large";
+  color?: "green" | "gray" | "white";
   animation?: "shrink" | "rotate" | "bounce" | "custom";
   animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
@@ -13,10 +15,11 @@ interface ButtonProps {
   iconColor?: string;
 }
 
-const Button: React.FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   action,
   text,
   icon,
+  size = "compact",
   iconSize = 24,
   iconColor = "white",
   animation,
@@ -57,11 +60,13 @@ const Button: React.FC<ButtonProps> = ({
   };
 
   return (
-    <button ref={buttonRef} className={styles.button} onClick={handleClick}>
+    <button
+      ref={buttonRef}
+      className={`${styles.button} ${styles[size]}`}
+      onClick={handleClick}
+    >
       {text && <span className={styles.text}>{text}</span>}
-      <Icon name={icon} size={iconSize} color={iconColor} />
+      {icon && <Icon name={icon} size={iconSize} color={iconColor} />}
     </button>
   );
 };
-
-export default Button;

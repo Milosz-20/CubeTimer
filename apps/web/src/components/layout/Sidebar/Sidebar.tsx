@@ -1,11 +1,11 @@
 import React from "react";
 import styles from "@components/layout/Sidebar/Sidebar.module.css";
 import { Link } from "react-router-dom";
-import Button from "@components/ui/Button/Button";
+import { Button } from "@components/ui/Button";
 import { toggleHistory } from "@store/slices/notificationsSlice";
 import { useDispatch } from "react-redux";
 
-const Sidebar: React.FC = () => {
+export const Sidebar: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
@@ -35,5 +35,3 @@ const Sidebar: React.FC = () => {
     </aside>
   );
 };
-
-export default Sidebar;

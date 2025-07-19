@@ -6,7 +6,7 @@ import {
   applyScramble,
   Cube
 } from "react-rubiks-cube-utils";
-import { RootState } from "store/store";
+import { RootState } from "@store/store";
 
 export function useScramble(type: string = "3x3") {
   const scramble = useSelector((state: RootState) => state.scramble.scramble);

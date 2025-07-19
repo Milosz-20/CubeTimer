@@ -7,7 +7,6 @@
   min-width: 30rem;
   max-width: 32rem;
   max-height: 60vh;
-  overflow-y: auto;
   display: flex;
   flex-direction: column;
   position: absolute;

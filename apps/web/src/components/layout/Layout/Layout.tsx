@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { RootState } from "store/store";
-import Sidebar from "../Sidebar/Sidebar";
+import { RootState } from "@store/store";
+import { Sidebar } from "../Sidebar";
+import { Header } from "@components/layout/Header";
 import NotificationList from "@components/feedback/NotificationList/NotificationList";
 import NotificationHistory from "@components/feedback/NotificationHistory/NotificationHistory";
 import styles from "./Layout.module.css";
@@ -21,6 +22,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       <NotificationList />
       <div className={styles.appLayout}>
         <Sidebar />
+        <Header />
         <div className={styles.mainContent}>{children}</div>
       </div>
     </>

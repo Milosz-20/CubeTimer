@@ -7,7 +7,7 @@ import {
 } from "@store/slices/notificationsSlice";
 import styles from "./NotificationHistory.module.css";
 import Notification from "@components/feedback/Notification/Notification";
-import Button from "@components/ui/Button/Button";
+import { Button } from "@components/ui/Button";
 
 const NotificationHistory: React.FC = () => {
   const notifications = useSelector(
@@ -36,7 +36,7 @@ const NotificationHistory: React.FC = () => {
         />
       </div>
       <div className={styles.notificationsList}>
-        {notifications.map((notification) => (
+        {notifications?.map((notification) => (
           <Notification
             key={notification.id}
             id={notification.id}
