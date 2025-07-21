@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@components/ui/Button";
 import { toggleHistory } from "@store/slices/notificationsSlice";
 import { useDispatch } from "react-redux";
+import { Icon } from "@components/ui/Icon/Icon";
 
 export const Sidebar: React.FC = () => {
   const dispatch = useDispatch();
@@ -23,13 +24,22 @@ export const Sidebar: React.FC = () => {
       </div>
       <ul>
         <li className={styles.listItem}>
-          <Link to="/timer">Timer</Link>
+          <Link to="/timer">
+            <Icon name={"time"} />
+            Timer
+          </Link>
         </li>
         <li className={styles.listItem}>
-          <Link to="/stats">Stats</Link>
+          <Link to="/stats">
+            <Icon name={"stats"} />
+            Stats
+          </Link>
         </li>
         <li className={styles.listItem}>
-          <Link to="/settings">Settings</Link>
+          <Link to="/settings">
+            <Icon name={"settings"} />
+            Settings
+          </Link>
         </li>
       </ul>
     </aside>

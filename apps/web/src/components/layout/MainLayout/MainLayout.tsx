@@ -5,13 +5,13 @@ import { Sidebar } from "../Sidebar";
 import { Header } from "@components/layout/Header";
 import NotificationList from "@components/feedback/NotificationList/NotificationList";
 import NotificationHistory from "@components/feedback/NotificationHistory/NotificationHistory";
-import styles from "./Layout.module.css";
+import styles from "./MainLayout.module.css";
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
-export const Layout: React.FC<LayoutProps> = ({ children }) => {
+export const MainLayout: React.FC<LayoutProps> = ({ children }) => {
   const showHistory = useSelector(
     (state: RootState) => state.notifications.notifHistoryVisibility
   );

@@ -3,10 +3,10 @@ import styles from "./Button.module.css";
 import { Icon, IconName } from "../Icon/Icon";
 
 interface ButtonProps {
-  action: () => void;
+  action?: () => void;
   text?: string;
   icon?: IconName;
-  size?: "noSpacing" | "compact" | "large";
+  size?: "noSpacing" | "compact" | "medium" | "large";
   color?: "green" | "gray" | "white";
   animation?: "shrink" | "rotate" | "bounce" | "custom";
   animationOptions?: Keyframe[];
@@ -56,7 +56,7 @@ export const Button: React.FC<ButtonProps> = ({
       }
     }
 
-    action();
+    if (action) action();
   };
 
   return (

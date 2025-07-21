@@ -15,22 +15,20 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  --bg-dark-0: oklch(0.18 0 0);
-  --bg-dark-1: oklch(0.22 0 0);
-  --bg-dark-2: oklch(0.23 0 0);
-  --bg-dark-3: oklch(0.24 0 0);
-  --bg-dark-4: oklch(0.26 0 0);
-  --bg-dark-5: oklch(0.27 0 0);
+  --dark-0: oklch(0.18 0 0);
+  --dark-1: oklch(0.22 0 0);
+  --dark-2: oklch(0.23 0 0);
+  --dark-3: oklch(0.24 0 0);
+  --dark-4: oklch(0.26 0 0);
+  --dark-5: oklch(0.27 0 0);
+  --dark-6: oklch(0.29 0 0);
+  --dark-7: oklch(0.31 0 0);
 
-  --text: oklch(0.96 0.01 299);
+  --text: oklch(0.97 0.01 299);
+  --text-dark: oklch(0.33 0.01 300);
 
-  --color-red: #f53029;
-  --color-green: #18ea4c;
-  --color-yellow: #f2e238;
-
-  --color-accent-green-0: #03c9bc;
-
-  --color-accent-magenta-0: #db5aba;
+  --green-1: oklch(0.82 0.173 154.07);
+  --green-2: oklch(0.88 0.173 154.07);
 }
 
 html {

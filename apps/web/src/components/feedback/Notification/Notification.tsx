@@ -19,7 +19,7 @@ const Notification: React.FC<NotificationProps> = ({
 }) => {
   return (
     <div className={`${styles.notification} ${styles[type]}`}>
-      <p>{message}</p>
+      <span>{message}</span>
       <Button
         action={() => onRemove(id)}
         icon={icon ?? "confirm"}

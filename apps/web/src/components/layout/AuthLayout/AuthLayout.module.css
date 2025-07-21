@@ -6,7 +6,7 @@ body {
 .appLayout {
   display: flex;
   min-height: 100vh;
-  background: var(--bg-dark-0);
+  background: var(--dark-0);
 }
 
 .mainContent {

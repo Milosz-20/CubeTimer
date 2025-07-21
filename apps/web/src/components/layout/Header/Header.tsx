@@ -1,15 +1,22 @@
 import { Button } from "@components/ui/Button/";
 import styles from "./Header.module.css";
+import { Link } from "react-router-dom";
 
 export const Header: React.FC = () => {
-  const handleNotificationClick = () => {
-    console.log("Notification clicked"); // lub inna logika
-  };
-
   return (
     <header className={styles.header}>
-      <Button size="compact" action={handleNotificationClick} text="Login" />
-      <Button size="compact" action={handleNotificationClick} text="Register" />
+      <ul>
+        <li className={`${styles.listItem} ${styles.login}`}>
+          <Link to="/auth/login">
+            <Button size="medium" text="Login" />
+          </Link>
+        </li>
+        <li className={`${styles.listItem} ${styles.register}`}>
+          <Link to="/auth/register">
+            <Button size="medium" text="Register" />
+          </Link>
+        </li>
+      </ul>
     </header>
   );
 };

@@ -4,14 +4,12 @@
   justify-content: space-between;
   align-items: center; /* Align content vertically */
   gap: 1rem;
-  padding: 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 1rem;
   color: var(--color-white);
-  font-size: 1.4rem;
-  width: 28rem; /* Slightly wider for better readability */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
-  opacity: 0; /* Start hidden */
-  transform: translateY(-10px); /* Start slightly above */
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: translateX(100px); /* Start from right side */
   animation: fadeIn 0.3s ease forwards; /* Fade-in animation */
   transition:
     transform 0.3s ease,
@@ -19,7 +17,7 @@
 }
 
 .notification.success {
-  background-color: var(--color-primary-dark-5);
+  background-color: var(--dark-5);
 }
 
 .notification.error {
@@ -27,7 +25,7 @@
 }
 
 .notification.info {
-  background-color: var(--color-accent-green-0);
+  background-color: var(--dark-5);
 }
 
 .notification.warning {
@@ -37,21 +35,21 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateX(100px);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
 @keyframes fadeOut {
   from {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
   to {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateX(-100px);
   }
 }

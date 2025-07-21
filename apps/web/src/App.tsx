@@ -3,10 +3,12 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate
+  Navigate,
+  Link
 } from "react-router-dom";
 import { ReduxProvider } from "./app/providers";
-import { Layout } from "./components/layout/Layout";
+import { MainLayout } from "@components/layout/MainLayout";
+import { AuthLayout } from "@components/layout/AuthLayout";
 import Timer from "./pages/Timer/TimerPage";
 import Stats from "./pages/Stats/Stats";
 
@@ -14,13 +16,45 @@ const App: React.FC = () => {
   return (
     <ReduxProvider>
       <Router>
-        <Layout>
-          <Routes>
-            <Route path="/" element={<Navigate to="/timer" />} />
-            <Route path="/timer" element={<Timer />} />
-            <Route path="/stats" element={<Stats />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route path="/" element={<Navigate to="/timer" />} />
+          <Route
+            path="/timer"
+            element={
+              <MainLayout>
+                <Timer />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/stats"
+            element={
+              <MainLayout>
+                <Stats />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/auth/login"
+            element={
+              <AuthLayout>
+                <div>
+                  Login page placeholder <Link to="/timer">go back</Link>
+                </div>
+              </AuthLayout>
+            }
+          />
+          <Route
+            path="/auth/register"
+            element={
+              <AuthLayout>
+                <div>
+                  Register page placeholder <Link to="/timer">go back</Link>
+                </div>
+              </AuthLayout>
+            }
+          />
+        </Routes>
       </Router>
     </ReduxProvider>
   );
