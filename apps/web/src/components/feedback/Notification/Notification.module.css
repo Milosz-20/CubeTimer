@@ -21,7 +21,7 @@
 }
 
 .notification.error {
-  background-color: var(--color-red);
+  background-color: var(--red);
 }
 
 .notification.info {
