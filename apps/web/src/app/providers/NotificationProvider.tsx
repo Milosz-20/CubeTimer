@@ -15,10 +15,6 @@ export const NotificationProvider: React.FC<NotistackProviderProps> = ({
       maxSnack={7}
       anchorOrigin={{ horizontal: "right", vertical: "top" }}
       action={(key) => <Button action={() => closeSnackbar(key)} icon="x" />}
-      style={{
-        top: '80px',
-        right: '20px'
-      }}
     >
       {children}
     </SnackbarProvider>
