@@ -28,49 +28,27 @@ ul {
   margin: 0;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 0.5rem;
 }
 
 .listItem {
   position: relative;
-  display: inline-flex;
-  padding: 0.25rem 0.25rem 0.25rem 2.75rem;
+  display: block;
+  width: 100%;
   line-height: 1.6;
   cursor: pointer;
-  transition:
-    padding-left 0.15s ease,
-    color 0.15s ease;
+  transition: background-color 0.15s ease;
   font-size: 2rem;
   text-decoration: none;
-  color: var(--color-white);
+  color: var(--text);
   font-weight: 400;
-}
-
-.listItem::before {
-  content: "";
-  display: block;
-  width: 0.75rem;
-  height: 0.75rem;
-  background-color: var(--color-white);
-  position: absolute;
-  left: 1rem;
-  top: 50%;
-  transform: translateY(-50%) rotate(45deg);
-  transform-origin: center;
-  transition:
-    transform 0.15s ease,
-    background-color 0.15s ease;
+  border-radius: 0.5rem;
 }
 
 .listItem:hover {
-  padding-left: 3.4rem;
   color: var(--green-1);
-}
-
-.listItem:hover::before {
-  transform: translateY(-50%) rotate(135deg) scale(1.2);
-  background-color: var(--green-2);
+  background-color: var(--dark-4);
 }
 
 .listItem a:link,
@@ -85,10 +63,18 @@ ul {
   display: inline-flex;
   align-items: center;
   gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  width: 100%;
+  box-sizing: border-box;
   transform-origin: center;
   transition:
     transform 0.15s ease-out,
-    color 0.15s ease-out;
+    color 0.15s ease-out,
+    padding-left 0.15s ease;
+}
+
+.listItem:hover a {
+  padding-left: 1.5rem;
 }
 
 .listItem a :global(svg) {

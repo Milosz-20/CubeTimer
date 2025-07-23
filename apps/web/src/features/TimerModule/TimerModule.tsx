@@ -62,6 +62,7 @@ const TimerModule: React.FC = () => {
           variant="success"
           timestamp={new Date()}
           onClose={() => closeSnackbar(key)}
+          autoHideDuration={500}
         />
       ),
       variant: "default" // Prevents default notistack styling

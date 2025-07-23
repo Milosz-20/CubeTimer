@@ -11,6 +11,7 @@ import { MainLayout } from "@components/layout/MainLayout";
 import { AuthLayout } from "@components/layout/AuthLayout";
 import Timer from "./pages/Timer/TimerPage";
 import Stats from "./pages/Stats/Stats";
+import Settings from "./pages/Settings/Settings";
 
 const App: React.FC = () => {
   return (
@@ -27,10 +28,18 @@ const App: React.FC = () => {
             }
           />
           <Route
-            path="/stats"
+            path="/statistics"
             element={
               <MainLayout>
                 <Stats />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <MainLayout>
+                <Settings />
               </MainLayout>
             }
           />

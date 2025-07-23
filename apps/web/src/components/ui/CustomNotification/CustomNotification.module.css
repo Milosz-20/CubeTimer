@@ -96,14 +96,12 @@
   opacity: 0.9;
 }
 
-/* Hover effects */
 .notification:hover {
   transform: translateY(-1px);
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
   transition: all 0.2s ease;
 }
 
-/* Animation for entry */
 .notification {
   animation: slideIn 0.3s ease-out;
 }
@@ -111,7 +109,7 @@
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-100%);
+    transform: translateX(-75%);
   }
   to {
     opacity: 1;

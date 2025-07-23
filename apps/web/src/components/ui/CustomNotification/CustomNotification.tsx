@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./CustomNotification.module.css";
+import { Icon } from "@components/ui/Icon";
 
 interface CustomNotificationProps {
   title: string;
@@ -7,6 +8,7 @@ interface CustomNotificationProps {
   variant?: "success" | "error" | "warning" | "info" | "default";
   timestamp?: Date;
   onClose?: () => void;
+  autoHideDuration: number;
 }
 
 export const CustomNotification = React.forwardRef<
@@ -37,7 +39,7 @@ export const CustomNotification = React.forwardRef<
               onClick={onClose}
               aria-label="Close notification"
             >
-              ×
+              <Icon name="x" />
             </button>
           )}
         </div>
