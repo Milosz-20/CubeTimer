@@ -44,3 +44,14 @@ html {
   -webkit-user-select: none;
   user-select: none;
 }
+
+/* Notistack positioning override - more aggressive approach */
+
+.SnackbarContainer-top,
+.SnackbarContainer-topRight,
+.notistack-SnackbarContainer,
+.notistack-SnackbarContainer.notistack-SnackbarContainer-top,
+div[class*="SnackbarContainer"][class*="top"] {
+  top: 7rem !important;
+  right: 1.5rem !important;
+}

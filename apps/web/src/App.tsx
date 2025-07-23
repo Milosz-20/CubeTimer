@@ -6,7 +6,7 @@ import {
   Navigate,
   Link
 } from "react-router-dom";
-import { ReduxProvider } from "./app/providers";
+import { AppProviders } from "./app/providers";
 import { MainLayout } from "@components/layout/MainLayout";
 import { AuthLayout } from "@components/layout/AuthLayout";
 import Timer from "./pages/Timer/TimerPage";
@@ -14,7 +14,7 @@ import Stats from "./pages/Stats/Stats";
 
 const App: React.FC = () => {
   return (
-    <ReduxProvider>
+    <AppProviders>
       <Router>
         <Routes>
           <Route path="/" element={<Navigate to="/timer" />} />
@@ -56,7 +56,7 @@ const App: React.FC = () => {
           />
         </Routes>
       </Router>
-    </ReduxProvider>
+    </AppProviders>
   );
 };
 

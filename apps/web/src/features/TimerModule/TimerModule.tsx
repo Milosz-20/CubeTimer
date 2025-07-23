@@ -8,9 +8,10 @@ import Display from "./components/Display/Display";
 import { formatTime, trimToWords } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch, useSelector } from "react-redux";
-import { addNotification } from "@store/slices/notificationsSlice";
 import { RootState } from "@store/store";
 import { setIsScrambleLocked } from "@store/slices/timerSlice";
+import { enqueueSnackbar, closeSnackbar } from "notistack";
+import { CustomNotification } from "@components/ui/CustomNotification";
 
 const TimerModule: React.FC = () => {
   const dispatch = useDispatch();
@@ -51,16 +52,20 @@ const TimerModule: React.FC = () => {
   const handleCopyButtonClick = () => {
     copyToClipboard(scramble);
 
-    const preview = trimToWords(scramble, 5) + " . . .";
+    const preview = trimToWords(scramble, 5) + "...";
 
-    dispatch(
-      addNotification({
-        id: Date.now().toString(),
-        message: `Copied scramble: ${preview}`,
-        type: "info",
-        lifetime: 5000
-      })
-    );
+    enqueueSnackbar("", {
+      content: (key) => (
+        <CustomNotification
+          title="Copied to Clipboard"
+          message={`Scramble: ${preview}`}
+          variant="success"
+          timestamp={new Date()}
+          onClose={() => closeSnackbar(key)}
+        />
+      ),
+      variant: "default" // Prevents default notistack styling
+    });
   };
 
   const handleGenerateButtonClick = useCallback(() => {
