@@ -128,6 +128,9 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# VSCode settings (may contain sensitive information)
+.vscode/
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged
@@ -135,8 +138,9 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-# Turborepo logs
+# Turborepo logs and cookies
 .turbo/daemon/
+.turbo/cookies
 
 # Prisma's generated files
 apps/server/generated/

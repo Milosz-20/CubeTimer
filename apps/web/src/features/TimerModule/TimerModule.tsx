@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from "react";
 import styles from "./TimerModule.module.css";
 import { useScramble } from "./hooks/useScramble";
 import { useCopyToClipboard } from "@hooks/useCopyToClipboard";
+import { useNotification } from "../../hooks/useNotification";
 import Scramble from "./components/Scramble/Scramble";
 import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
@@ -10,14 +11,13 @@ import { useTimer } from "./hooks/useTimer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@store/store";
 import { setIsScrambleLocked } from "@store/slices/timerSlice";
-import { enqueueSnackbar, closeSnackbar } from "notistack";
-import { CustomNotification } from "@components/ui/CustomNotification";
 
 const TimerModule: React.FC = () => {
   const dispatch = useDispatch();
   const holdToReadyDuration = 300;
   const { scramble, generateNewScramble } = useScramble("3x3");
   const { copyToClipboard } = useCopyToClipboard();
+  const { notify } = useNotification();
   const isScrambleLocked = useSelector(
     (state: RootState) => state.timer.isScrambleLocked
   );
@@ -52,20 +52,13 @@ const TimerModule: React.FC = () => {
   const handleCopyButtonClick = () => {
     copyToClipboard(scramble);
 
-    const preview = trimToWords(scramble, 5) + "...";
+    const preview = trimToWords(scramble, 8) + "...";
 
-    enqueueSnackbar("", {
-      content: (key) => (
-        <CustomNotification
-          title="Copied to Clipboard"
-          message={`Scramble: ${preview}`}
-          variant="success"
-          timestamp={new Date()}
-          onClose={() => closeSnackbar(key)}
-          autoHideDuration={500}
-        />
-      ),
-      variant: "default" // Prevents default notistack styling
+    notify({
+      title: "Copied to Clipboard",
+      message: `Scramble: ${preview}`,
+      variant: "success",
+      autoHideDuration: 500
     });
   };
 

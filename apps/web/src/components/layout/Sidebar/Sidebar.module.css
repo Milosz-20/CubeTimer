@@ -38,11 +38,11 @@ ul {
   width: 100%;
   line-height: 1.6;
   cursor: pointer;
-  transition: background-color 0.15s ease;
-  font-size: 2rem;
+  transition: all 0.125s ease;
+  font-size: 1.75rem;
   text-decoration: none;
   color: var(--text);
-  font-weight: 400;
+  font-weight: 350;
   border-radius: 0.5rem;
 }
 
@@ -68,9 +68,9 @@ ul {
   box-sizing: border-box;
   transform-origin: center;
   transition:
-    transform 0.15s ease-out,
-    color 0.15s ease-out,
-    padding-left 0.15s ease;
+    transform 0.125s ease-out,
+    color 0.125s ease-out,
+    padding-left 0.125s ease;
 }
 
 .listItem:hover a {
@@ -80,7 +80,7 @@ ul {
 .listItem a :global(svg) {
   width: 2.25rem;
   height: 2.25rem;
-  transition: all 0.15s ease-out;
+  transition: all 0.125s ease-out;
 }
 
 .listItem:hover a :global(svg) {

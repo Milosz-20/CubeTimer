@@ -17,23 +17,27 @@ const Actions: React.FC<ActionsProps> = ({
 }) => {
   return (
     <div className={styles.options}>
-      <Button
-        action={onLock}
-        icon={isScrambleLocked ? "locked" : "unlocked"}
-        animation="bounce"
-        animationTiming={{ duration: 225 }}
-      />
+      <div
+        className={`${styles.lockButton} ${isScrambleLocked ? styles.locked : styles.unlocked}`}
+      >
+        <Button
+          action={onLock}
+          icon={isScrambleLocked ? "locked" : "unlocked"}
+          animation="bounce"
+          animationTiming={{ duration: 200 }}
+        />
+      </div>
       <Button
         action={onCopy}
         icon="copy"
-        animationTiming={{ duration: 150 }}
+        animationTiming={{ duration: 200 }}
         animation="shrink"
       />
       <Button
         action={onGenerate}
         icon="reload"
         animation="rotate"
-        animationTiming={{ duration: 300 }}
+        animationTiming={{ duration: 200 }}
       />
     </div>
   );

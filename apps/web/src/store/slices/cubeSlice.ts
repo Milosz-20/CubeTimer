@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { Cube } from "react-rubiks-cube-utils";
 
-interface cubeState {
+interface CubeState {
   cube: Cube | null;
   scramble: string;
 }
 
-const initialState: cubeState = { cube: null, scramble: "" };
+const initialState: CubeState = { cube: null, scramble: "" };
 
 const cubeSlice = createSlice({
   name: "cube",

@@ -103,7 +103,7 @@
 }
 
 .notification {
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.225s ease-out;
 }
 
 @keyframes slideIn {

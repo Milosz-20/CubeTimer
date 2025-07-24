@@ -29,6 +29,12 @@ export const Sidebar: React.FC = () => {
           </Link>
         </li>
         <li className={styles.listItem}>
+          <Link to="/notifications">
+            <Icon name={"bell"} />
+            Notifications
+          </Link>
+        </li>
+        <li className={styles.listItem}>
           <Link to="/settings">
             <Icon name={"settings"} />
             Settings

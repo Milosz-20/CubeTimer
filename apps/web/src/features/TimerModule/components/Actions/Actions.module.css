@@ -6,3 +6,21 @@
   justify-content: center;
   gap: 1rem;
 }
+
+.lockButton {
+  transition: color 0.3s ease;
+}
+
+.lockButton svg,
+.lockButton.unlocked svg,
+.lockButton.locked svg {
+  transition: stroke 0.2s ease;
+}
+
+.lockButton.unlocked svg {
+  stroke: var(--text);
+}
+
+.lockButton.locked svg {
+  stroke: var(--red);
+}

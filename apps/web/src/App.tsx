@@ -9,9 +9,7 @@ import {
 import { AppProviders } from "./app/providers";
 import { MainLayout } from "@components/layout/MainLayout";
 import { AuthLayout } from "@components/layout/AuthLayout";
-import Timer from "./pages/Timer/TimerPage";
-import Stats from "./pages/Stats/Stats";
-import Settings from "./pages/Settings/Settings";
+import { Timer, Stats, Settings, Notifications } from "@pages/index";
 
 const App: React.FC = () => {
   return (
@@ -40,6 +38,14 @@ const App: React.FC = () => {
             element={
               <MainLayout>
                 <Settings />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/notifications"
+            element={
+              <MainLayout>
+                <Notifications />
               </MainLayout>
             }
           />

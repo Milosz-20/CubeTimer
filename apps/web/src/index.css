@@ -31,8 +31,10 @@
   --green-2: oklch(0.88 0.173 154.07);
   --green-3: oklch(0.94 0.173 154.07);
   --green-4: oklch(0.99 0.173 154.07);
-  --green-5: oklch(93.314% 0.08377 161.174);
+  --green-5: oklch(0.93 0.08377 161.174);
 
+  --white-1: #f1f1f1;
+  --white-2: #fdfdfd;
   --red: #f53029;
   --green: #18ea4c;
 }
