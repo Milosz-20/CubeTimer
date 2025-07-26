@@ -1,18 +1,15 @@
 import React, { useRef } from "react";
 import styles from "./Button.module.css";
-import { Icon, IconName } from "../Icon/Icon";
 
-interface ButtonProps {
+export interface ButtonProps {
   action?: () => void;
   text?: string;
-  icon?: IconName;
+  icon?: React.ReactNode;
   size?: "noSpacing" | "compact" | "medium" | "large";
   color?: "green" | "gray" | "white";
   animation?: "shrink" | "rotate" | "bounce" | "custom";
   animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
-  iconSize?: number;
-  iconColor?: string;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,8 +17,7 @@ export const Button: React.FC<ButtonProps> = ({
   text,
   icon,
   size = "compact",
-  iconSize = 24,
-  iconColor = "white",
+  color = "white",
   animation,
   animationOptions,
   animationTiming
@@ -44,7 +40,8 @@ export const Button: React.FC<ButtonProps> = ({
           { transform: "translateY(0)" },
           { transform: "translateY(-0.5rem)" },
           { transform: "translateY(0)" }
-        ]
+        ],
+        error: [{ opacity: 1 }, { opacity: 0.8 }, { opacity: 1 }]
       };
 
       const keyframes =
@@ -66,7 +63,7 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={handleClick}
     >
       {text && <span className={styles.text}>{text}</span>}
-      {icon && <Icon name={icon} size={iconSize} color={iconColor} />}
+      {icon && icon}
     </button>
   );
 };

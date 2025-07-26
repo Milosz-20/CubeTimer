@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./Actions.module.css";
 import { Button } from "@components/ui/Button";
+import { Lock, Unlock, Clipboard, Settings } from "lucide-react";
 
 interface ActionsProps {
   onLock: () => void;
@@ -22,21 +23,21 @@ const Actions: React.FC<ActionsProps> = ({
       >
         <Button
           action={onLock}
-          icon={isScrambleLocked ? "locked" : "unlocked"}
+          icon={isScrambleLocked ? <Lock size={20} /> : <Unlock size={20} />}
           animation="bounce"
           animationTiming={{ duration: 200 }}
         />
       </div>
       <Button
         action={onCopy}
-        icon="copy"
+        icon={<Clipboard size={20} />}
         animationTiming={{ duration: 200 }}
         animation="shrink"
       />
       <Button
         action={onGenerate}
-        icon="reload"
-        animation="rotate"
+        icon={<Settings size={20} />}
+        animation={isScrambleLocked ? "custom" : "rotate"}
         animationTiming={{ duration: 200 }}
       />
     </div>
