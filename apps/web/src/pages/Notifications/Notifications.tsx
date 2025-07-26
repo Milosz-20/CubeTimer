@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "@store/store";
+import { useNotification } from "@hooks/useNotification";
 import {
   markAsRead,
   markAllAsRead,
@@ -14,6 +15,34 @@ const Notifications: React.FC = () => {
     (state: RootState) => state.notifications.notifications
   );
   const dispatch = useDispatch();
+  const { notify } = useNotification();
+
+  useEffect(() => {
+    notify({
+      title: "Test notification 1",
+      message: "This is test info notification",
+      variant: "info",
+      autoHideDuration: 500
+    });
+    notify({
+      title: "Test notification 2",
+      message: "This is test succes notification",
+      variant: "success",
+      autoHideDuration: 500
+    });
+    notify({
+      title: "Test notification 3",
+      message: "This is test warning notification",
+      variant: "warning",
+      autoHideDuration: 500
+    });
+    notify({
+      title: "Test notification 4",
+      message: "This is test error notification",
+      variant: "error",
+      autoHideDuration: 500
+    });
+  }, [notify]);
 
   const handleMarkAsRead = (id: string) => {
     dispatch(markAsRead(id));
@@ -101,10 +130,20 @@ const Notifications: React.FC = () => {
                   <div
                     key={notification.id}
                     className={`${styles.notificationItem} ${!notification.isRead ? styles.unread : ""} ${styles[notification.variant]}`}
+                    onClick={() => {
+                      if (!notification.isRead)
+                        handleMarkAsRead(notification.id);
+                    }}
+                    style={{
+                      cursor: !notification.isRead ? "pointer" : "default"
+                    }}
                   >
                     <div className={styles.notificationContent}>
                       <div className={styles.notificationHeader}>
-                        <h3 className={styles.notificationTitle}>
+                        <h3
+                          className={`${styles.notificationTitle} ${!notification.isRead ? styles.unreadTitle : ""}`}
+                          title={!notification.isRead ? "Click to mark as read" : undefined}
+                        >
                           {notification.title}
                         </h3>
                         <span className={styles.notificationTime}>
@@ -116,20 +155,12 @@ const Notifications: React.FC = () => {
                       </p>
                     </div>
                     <div className={styles.notificationActions}>
-                      {!notification.isRead && (
-                        <button
-                          className={styles.markReadButton}
-                          onClick={() => handleMarkAsRead(notification.id)}
-                          title="Mark as read"
-                        >
-                          ✓
-                        </button>
-                      )}
                       <button
                         className={styles.removeButton}
-                        onClick={() =>
-                          handleRemoveNotification(notification.id)
-                        }
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleRemoveNotification(notification.id);
+                        }}
                         title="Remove notification"
                       >
                         ✕

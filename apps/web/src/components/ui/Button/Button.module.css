@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  color: var(--color-white);
+  color: var(--text);
   border: none;
   cursor: pointer;
   background: none;
@@ -46,14 +46,14 @@
 .icon {
   width: 2.5rem;
   aspect-ratio: 1;
-  stroke: var(--color-white);
+  stroke: var(--text);
   transition:
     stroke 0.15s ease,
     transform 0.15s ease;
 }
 
 .button:hover .icon {
-  stroke: var(--color-white);
+  stroke: var(--text);
 }
 
 .rotate {

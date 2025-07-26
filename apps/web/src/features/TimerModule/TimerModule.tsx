@@ -70,7 +70,7 @@ const TimerModule: React.FC = () => {
 
   const displayTimeValue = formatTime(time);
 
-  let displayTextColor = "var(--color-white)";
+  let displayTextColor = "var(--text)";
   if (isHolding) {
     displayTextColor = "var(--red)";
   } else if (isReady && !isRunning) {
