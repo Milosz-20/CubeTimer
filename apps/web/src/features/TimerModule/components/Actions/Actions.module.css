@@ -24,3 +24,11 @@
 .lockButton.locked svg {
   stroke: var(--red);
 }
+
+.rotateIcon {
+  transform-origin: 50% 50%;
+  display: block;
+  margin: auto;
+  width: 2rem;
+  height: 2rem;
+}

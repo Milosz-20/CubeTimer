@@ -21,7 +21,9 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.8.1",
+    "framer-motion": "^12.23.9",
     "lucide-react": "^0.525.0",
+    "motion": "^12.23.9",
     "notistack": "^3.0.2",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

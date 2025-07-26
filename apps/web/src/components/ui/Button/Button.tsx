@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import styles from "./Button.module.css";
+import { motion } from "framer-motion";
 
 export interface ButtonProps {
   action?: () => void;
@@ -10,6 +11,8 @@ export interface ButtonProps {
   animation?: "shrink" | "rotate" | "bounce" | "error";
   animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
+  motionBtn?: boolean;
+  isLocked?: boolean;
 }
 
 export const Button: React.FC<ButtonProps> = ({
@@ -20,9 +23,12 @@ export const Button: React.FC<ButtonProps> = ({
   color = "white",
   animation,
   animationOptions,
-  animationTiming
+  animationTiming,
+  motionBtn,
+  isLocked
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
+  const [rotate, setRotate] = useState<number>(0);
 
   const handleClick = () => {
     if (buttonRef.current) {
@@ -32,10 +38,10 @@ export const Button: React.FC<ButtonProps> = ({
           { transform: "scale(0.9)" },
           { transform: "scale(1)" }
         ],
-        rotate: [
-          { transform: "rotate(0deg)" },
-          { transform: "rotate(360deg)" }
-        ],
+        // rotate: [
+        //   { transform: "rotate(0deg)" },
+        //   { transform: "rotate(360deg)" }
+        // ],
         bounce: [
           { transform: "translateY(0)" },
           { transform: "translateY(-0.5rem)" },
@@ -52,6 +58,10 @@ export const Button: React.FC<ButtonProps> = ({
       }
     }
 
+    if (motionBtn) {
+      if (!isLocked) setRotate((r) => r + 360);
+    }
+
     if (action) action();
   };
 
@@ -62,7 +72,18 @@ export const Button: React.FC<ButtonProps> = ({
       onClick={handleClick}
     >
       {text && <span className={styles.text}>{text}</span>}
-      {icon && icon}
+      {icon &&
+        (motionBtn ? (
+          <motion.span
+            animate={{ rotate }}
+            transition={{ duration: 0.3, ease: "easeInOut" }}
+            style={{ display: "inline-block" }}
+          >
+            {icon}
+          </motion.span>
+        ) : (
+          icon
+        ))}
     </button>
   );
 };

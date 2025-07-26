@@ -36,9 +36,11 @@ const Actions: React.FC<ActionsProps> = ({
       />
       <Button
         action={onGenerate}
-        icon={<RotateCw size={20} />}
+        icon={<RotateCw className={styles.rotateIcon} />}
         animation={isScrambleLocked ? "error" : "rotate"}
         animationTiming={{ duration: 200 }}
+        motionBtn={true}
+        isLocked={isScrambleLocked}
       />
     </div>
   );
