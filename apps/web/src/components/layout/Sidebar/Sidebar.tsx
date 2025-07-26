@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "@components/layout/Sidebar/Sidebar.module.css";
 import { Link } from "react-router-dom";
-import { Button } from "@components/ui/Button";
 import { Clock, BarChart2, Bell, Settings } from "lucide-react";
 
 export const Sidebar: React.FC = () => {
@@ -9,11 +8,6 @@ export const Sidebar: React.FC = () => {
     <aside className={styles.sidebar}>
       <div className={styles.title}>
         <h2>Cube Timer</h2>
-        <Button
-          icon={<Bell size={20} />}
-          animation="bounce"
-          animationTiming={{ duration: 200 }}
-        />
       </div>
       <ul>
         <li className={styles.listItem}>

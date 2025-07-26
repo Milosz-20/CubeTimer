@@ -8,12 +8,12 @@ export const Header: React.FC = () => {
       <ul>
         <li className={`${styles.listItem} ${styles.login}`}>
           <Link to="/auth/login">
-            <Button size="medium" text="Login" />
+            <Button size="large" text="Login" />
           </Link>
         </li>
         <li className={`${styles.listItem} ${styles.register}`}>
           <Link to="/auth/register">
-            <Button size="medium" text="Register" />
+            <Button size="large" text="Register" />
           </Link>
         </li>
       </ul>

@@ -1,5 +1,5 @@
 // converts time from ms to m:s:ms
-export const formatTime = (ms: number): string => {
+export const formatTimeFromMs = (ms: number): string => {
   const totalCentiseconds = Math.floor(ms / 10);
   const totalSeconds = Math.floor(totalCentiseconds / 100);
   const minutes = Math.floor(totalSeconds / 60);

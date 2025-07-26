@@ -2,7 +2,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--text);
   border: none;
   cursor: pointer;
@@ -13,30 +13,22 @@
 
 .noSpacing {
   padding: 0;
-  font-size: 1.75rem;
+  font-size: 1.55rem;
 }
 
 .compact {
-  padding: 0.25rem 0.5rem;
-  font-size: 1.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 1.5rem;
 }
 
 .medium {
-  padding: 0.5rem 0.75rem;
-  font-size: 2rem;
+  padding: 1rem 1.25rem;
+  font-size: 1.75rem;
 }
 
 .large {
-  padding: 0.75rem 1rem;
-  font-size: 2.25rem;
-}
-
-.green {
-  background-color: var(--green);
-}
-
-.gray {
-  background-color: var(--dark-5);
+  padding: 1.25rem 1.5rem;
+  font-size: 2rem;
 }
 
 .button:focus-visible {

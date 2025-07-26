@@ -6,9 +6,9 @@ export interface ButtonProps {
   text?: string;
   icon?: React.ReactNode;
   size?: "noSpacing" | "compact" | "medium" | "large";
-  color?: "green" | "gray" | "white";
+  color?: string;
+  borderRd?: string;
   animation?: "shrink" | "rotate" | "bounce" | "error";
-  animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
 }
 
@@ -17,9 +17,9 @@ export const Button: React.FC<ButtonProps> = ({
   text,
   icon,
   size = "compact",
-  color = "white",
+  color,
+  borderRd = "0.5rem",
   animation,
-  animationOptions,
   animationTiming
 }) => {
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -55,11 +55,15 @@ export const Button: React.FC<ButtonProps> = ({
     if (action) action();
   };
 
+  // If color starts with '--', treat as CSS variable
+  const backgroundStyle = color?.startsWith("--") ? `var(${color})` : color;
+
   return (
     <button
       ref={buttonRef}
       className={`${styles.button} ${styles[size]}`}
       onClick={handleClick}
+      style={{ borderRadius: borderRd, background: backgroundStyle }}
     >
       {text && <span className={styles.text}>{text}</span>}
       {icon && icon}

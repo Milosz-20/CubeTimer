@@ -6,7 +6,7 @@ import { useNotification } from "../../hooks/useNotification";
 import Scramble from "./components/Scramble/Scramble";
 import Actions from "./components/Actions/Actions";
 import Display from "./components/Display/Display";
-import { formatTime, trimToWords } from "@utils/textFormatter";
+import { formatTimeFromMs, trimToWords } from "@utils/textFormatter";
 import { useTimer } from "./hooks/useTimer";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@store/store";
@@ -68,7 +68,7 @@ const TimerModule: React.FC = () => {
     }
   }, [isRunning, generateNewScramble, isScrambleLocked]);
 
-  const displayTimeValue = formatTime(time);
+  const displayTimeValue = formatTimeFromMs(time);
 
   let displayTextColor = "var(--text)";
   if (isHolding) {

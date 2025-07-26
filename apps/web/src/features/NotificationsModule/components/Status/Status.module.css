@@ -1,0 +1,50 @@
+.status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  gap: 1rem;
+  background-color: var(--dark-3);
+  border-radius: 1rem;
+  border: 1px solid var(--dark-4);
+  /* margin-bottom: 1.5rem; */
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.stats {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.count {
+  color: var(--text);
+  font-size: 1.2rem;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.actionButton {
+  padding: 0.75rem 1.5rem;
+  background-color: var(--dark-2);
+  border: 1px solid var(--dark-3);
+  border-radius: 0.75rem;
+  color: var(--text);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.actionButton:hover:not(:disabled) {
+  background-color: var(--dark-3);
+  border-color: var(--green-1);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}

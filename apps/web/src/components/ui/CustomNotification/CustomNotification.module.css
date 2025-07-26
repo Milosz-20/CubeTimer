@@ -1,33 +1,29 @@
 .notification {
-  background: var(--dark-5);
+  background: var(--dark-4);
   border-radius: 12px;
   padding: 16px 20px;
   min-width: 300px;
   max-width: 400px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  border-left: 4px solid var(--dark-6);
+  border-left: 4px solid;
   color: var(--text);
   font-family: inherit;
 }
 
 .notification.success {
   border-left-color: var(--green-1);
-  background: var(--dark-4);
 }
 
 .notification.error {
   border-left-color: var(--red);
-  background: var(--dark-4);
 }
 
 .notification.warning {
   border-left-color: #ffa726;
-  background: var(--dark-4);
 }
 
 .notification.info {
   border-left-color: #42a5f5;
-  background: var(--dark-4);
 }
 
 .header {
