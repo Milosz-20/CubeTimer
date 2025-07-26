@@ -2,7 +2,7 @@ import React from "react";
 import styles from "@components/layout/Sidebar/Sidebar.module.css";
 import { Link } from "react-router-dom";
 import { Button } from "@components/ui/Button";
-import { Icon } from "@components/ui/Icon/Icon";
+import { Clock, BarChart2, Bell, Settings } from "lucide-react";
 
 export const Sidebar: React.FC = () => {
   return (
@@ -10,7 +10,7 @@ export const Sidebar: React.FC = () => {
       <div className={styles.title}>
         <h2>Cube Timer</h2>
         <Button
-          icon="bell"
+          icon={<Bell size={20} />}
           animation="bounce"
           animationTiming={{ duration: 200 }}
         />
@@ -18,25 +18,25 @@ export const Sidebar: React.FC = () => {
       <ul>
         <li className={styles.listItem}>
           <Link to="/timer">
-            <Icon name={"time"} />
+            <Clock size={20} />
             Timer
           </Link>
         </li>
         <li className={styles.listItem}>
           <Link to="/statistics">
-            <Icon name={"stats"} />
+            <BarChart2 size={20} />
             Statistics
           </Link>
         </li>
         <li className={styles.listItem}>
           <Link to="/notifications">
-            <Icon name={"bell"} />
+            <Bell size={20} />
             Notifications
           </Link>
         </li>
         <li className={styles.listItem}>
           <Link to="/settings">
-            <Icon name={"settings"} />
+            <Settings size={20} />
             Settings
           </Link>
         </li>

@@ -7,7 +7,7 @@ export interface ButtonProps {
   icon?: React.ReactNode;
   size?: "noSpacing" | "compact" | "medium" | "large";
   color?: "green" | "gray" | "white";
-  animation?: "shrink" | "rotate" | "bounce" | "custom";
+  animation?: "shrink" | "rotate" | "bounce" | "error";
   animationOptions?: Keyframe[];
   animationTiming?: KeyframeAnimationOptions;
 }
@@ -44,8 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
         error: [{ opacity: 1 }, { opacity: 0.8 }, { opacity: 1 }]
       };
 
-      const keyframes =
-        animation === "custom" ? animationOptions : animations[animation!];
+      const keyframes = animations[animation!];
       const timing = animationTiming || { duration: 200, easing: "ease" };
 
       if (keyframes) {

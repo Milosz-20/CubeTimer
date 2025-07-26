@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./CustomNotification.module.css";
-import { Icon } from "@components/ui/Icon";
+import { X } from "lucide-react";
 
 interface CustomNotificationProps {
   title: string;
@@ -32,7 +32,7 @@ export const CustomNotification = React.forwardRef<
             onClick={onClose}
             aria-label="Close notification"
           >
-            <Icon name="x" />
+            <X />
           </button>
         )}
       </div>

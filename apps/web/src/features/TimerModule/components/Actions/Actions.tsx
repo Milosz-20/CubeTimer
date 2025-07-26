@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Actions.module.css";
 import { Button } from "@components/ui/Button";
-import { Lock, Unlock, Clipboard, Settings } from "lucide-react";
+import { Lock, Unlock, Clipboard, RotateCw } from "lucide-react";
 
 interface ActionsProps {
   onLock: () => void;
@@ -36,8 +36,8 @@ const Actions: React.FC<ActionsProps> = ({
       />
       <Button
         action={onGenerate}
-        icon={<Settings size={20} />}
-        animation={isScrambleLocked ? "custom" : "rotate"}
+        icon={<RotateCw size={20} />}
+        animation={isScrambleLocked ? "error" : "rotate"}
         animationTiming={{ duration: 200 }}
       />
     </div>
