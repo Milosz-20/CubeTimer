@@ -47,8 +47,42 @@ ul {
 }
 
 .listItem:hover {
+  background-color: var(--dark-5);
+}
+
+/* Pseudoelement dla wszystkich elementów - zawsze obecny */
+.listItem::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 70%;
+  background-color: var(--green-1);
+  border-radius: 0 2px 2px 0;
+  transition: width 0.125s ease-out;
+}
+
+/* Styl dla aktywnego elementu */
+.listItem.active {
   color: var(--green-1);
   background-color: var(--dark-4);
+  font-weight: 450;
+  position: relative;
+}
+
+.listItem.active::before {
+  width: 4px;
+}
+
+.listItem.active a {
+  padding-left: 1.5rem;
+}
+
+.listItem.active:hover {
+  background-color: var(--dark-3);
+  color: var(--green-1);
 }
 
 .listItem a:link,
