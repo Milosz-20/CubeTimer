@@ -46,11 +46,10 @@ ul {
   border-radius: 0.5rem;
 }
 
-.listItem:hover {
+.listItem:hover:not(.active) {
   background-color: var(--dark-5);
 }
 
-/* Pseudoelement dla wszystkich elementów - zawsze obecny */
 .listItem::before {
   content: "";
   position: absolute;
@@ -64,11 +63,9 @@ ul {
   transition: width 0.125s ease-out;
 }
 
-/* Styl dla aktywnego elementu */
 .listItem.active {
   color: var(--green-1);
-  background-color: var(--dark-4);
-  font-weight: 450;
+  background-color: var(--dark-3);
   position: relative;
 }
 
@@ -80,9 +77,8 @@ ul {
   padding-left: 1.5rem;
 }
 
-.listItem.active:hover {
-  background-color: var(--dark-3);
-  color: var(--green-1);
+.listItem:hover:not(.active) {
+  background-color: var(--dark-5);
 }
 
 .listItem a:link,
@@ -107,10 +103,6 @@ ul {
     padding-left 0.125s ease;
 }
 
-.listItem:hover a {
-  padding-left: 1.5rem;
-}
-
 .listItem a :global(svg) {
   width: 2.25rem;
   height: 2.25rem;
@@ -122,5 +114,5 @@ ul {
 }
 
 .listItem a :global(svg path) {
-  transition: fill 0.15s ease-out;
+  transition: fill 0.125s ease-out;
 }
