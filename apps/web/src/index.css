@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -23,6 +23,7 @@
   --dark-5: oklch(0.27 0 0);
   --dark-6: oklch(0.29 0 0);
   --dark-7: oklch(0.32 0 0);
+  --dark-8: oklch(0.42 0 0);
 
   --text: oklch(0.97 0.01 299);
   --text-2: oklch(096 0.01 299);
@@ -33,6 +34,10 @@
   --green-3: oklch(0.94 0.173 154.07);
   --green-4: oklch(0.99 0.173 154.07);
   --green-5: oklch(0.93 0.08377 161.174);
+
+  --yellow-1: oklch(0.97 0.13 97);
+  --yellow-2: oklch(0.93 0.15 97);
+  --yellow-3: oklch(0.89 0.17 97);
 
   --white-1: #f1f1f1;
   --white-2: #fdfdfd;
@@ -45,7 +50,7 @@ html {
 }
 
 * {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-optical-sizing: auto;
   -webkit-user-select: none;
   user-select: none;
@@ -57,7 +62,7 @@ html {
 .SnackbarContainer-topRight,
 .notistack-SnackbarContainer,
 .notistack-SnackbarContainer.notistack-SnackbarContainer-top,
-div[class*="SnackbarContainer"][class*="top"] {
+div[class*='SnackbarContainer'][class*='top'] {
   top: 7rem !important;
   right: 1.5rem !important;
 }

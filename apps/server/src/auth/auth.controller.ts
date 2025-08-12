@@ -40,9 +40,8 @@ export class AuthController {
     @Body() dto: LoginDto,
     @Res({ passthrough: true }) res: Response
   ) {
-    console.log(dto);
     const { access_token, expiryMs } = await this.authService.login(dto);
     this.setTokenCookie(res, access_token, expiryMs);
-    return { message: "Registration successful" };
+    return { message: "Login successful" };
   }
 }

@@ -3,13 +3,19 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
-  Link
+  Navigate
 } from "react-router-dom";
 import { AppProviders } from "./app/providers";
 import { MainLayout } from "@components/layout/MainLayout";
 import { AuthLayout } from "@components/layout/AuthLayout";
-import { Timer, Stats, Settings, Notifications } from "@pages/index";
+import {
+  Timer,
+  Stats,
+  Settings,
+  Notifications,
+  Login,
+  Register
+} from "@pages/index";
 
 const App: React.FC = () => {
   return (
@@ -53,9 +59,7 @@ const App: React.FC = () => {
             path="/auth/login"
             element={
               <AuthLayout>
-                <div>
-                  Login page placeholder <Link to="/timer">go back</Link>
-                </div>
+                <Login />
               </AuthLayout>
             }
           />
@@ -63,9 +67,7 @@ const App: React.FC = () => {
             path="/auth/register"
             element={
               <AuthLayout>
-                <div>
-                  Register page placeholder <Link to="/timer">go back</Link>
-                </div>
+                <Register />
               </AuthLayout>
             }
           />
