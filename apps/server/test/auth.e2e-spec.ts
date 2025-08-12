@@ -37,7 +37,7 @@ describe("Auth e2e", () => {
           .post("/auth/register")
           .withBody({
             username: "testuser",
-            displayName: "Test User",
+            nickname: "Test User",
             email: "test@example.com",
             password: "password123"
           })
@@ -51,7 +51,7 @@ describe("Auth e2e", () => {
           .post("/auth/register")
           .withBody({
             username: "testuser2",
-            displayName: "Test User 2",
+            nickname: "Test User 2",
             email: "test@example.com", // same email
             password: "password123"
           })
@@ -64,7 +64,7 @@ describe("Auth e2e", () => {
           .post("/auth/register")
           .withBody({
             username: "testuser", // same username
-            displayName: "Test User 3",
+            nickname: "Test User 3",
             email: "test3@example.com",
             password: "password123"
           })
@@ -77,7 +77,7 @@ describe("Auth e2e", () => {
           .post("/auth/register")
           .withBody({
             username: "testuser2",
-            displayName: "Test User 2",
+            nickname: "Test User 2",
             email: "test2@example.com",
             password: "password456"
           })

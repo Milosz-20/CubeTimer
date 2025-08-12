@@ -5,7 +5,7 @@ import styles from './RegisterForm.module.scss';
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9-_]{2,23}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const DISPLAY_NAME_REGEX = /^[a-zA-Z0-9\s-_]{2,30}$/;
+const NICKNAME_REGEX = /^[a-zA-Z0-9\s-_]{2,30}$/;
 
 const RegisterForm: React.FC = () => {
   const userRef = useRef<HTMLInputElement>(null);
@@ -16,10 +16,10 @@ const RegisterForm: React.FC = () => {
   const [validName, setValidName] = useState(false);
   const [userFocus, setUserFocus] = useState(false);
 
-  // Display Name
-  const [displayName, setDisplayName] = useState('');
-  const [validDisplayName, setValidDisplayName] = useState(false);
-  const [displayNameFocus, setDisplayNameFocus] = useState(false);
+  // Nickname
+  const [nickname, setNickname] = useState('');
+  const [validNickname, setValidNickname] = useState(false);
+  const [nicknameFocus, setNicknameFocus] = useState(false);
 
   // Email
   const [email, setEmail] = useState('');
@@ -51,9 +51,9 @@ const RegisterForm: React.FC = () => {
   }, [user]);
 
   useEffect(() => {
-    const result = DISPLAY_NAME_REGEX.test(displayName);
-    setValidDisplayName(result);
-  }, [displayName]);
+    const result = NICKNAME_REGEX.test(nickname);
+    setValidNickname(result);
+  }, [nickname]);
 
   useEffect(() => {
     const result = EMAIL_REGEX.test(email);
@@ -71,7 +71,7 @@ const RegisterForm: React.FC = () => {
 
   useEffect(() => {
     setErrMsg('');
-  }, [user, displayName, email, pwd, pwdMatch]);
+  }, [user, nickname, email, pwd, pwdMatch]);
 
   const handleSubmit = (e: any) => {
     console.log(e);
@@ -106,18 +106,18 @@ const RegisterForm: React.FC = () => {
           />
         </div>
 
-        {/* Display Name */}
+        {/* Nickname */}
         <div className={styles['form-group']}>
           <AtSign className={styles['input-icon']} size={20} />
           <input
             type='text'
-            id='displayName'
-            value={displayName}
+            id='nickname'
+            value={nickname}
             onChange={(e) => {
-              setDisplayName(e.target.value);
+              setNickname(e.target.value);
             }}
             onBlur={(e) => {
-              setDisplayNameFocus(true);
+              setNicknameFocus(true);
               // hideInfoModal()
             }}
             placeholder='Nickname'
@@ -187,7 +187,7 @@ const RegisterForm: React.FC = () => {
         <button
           type='submit'
           className={styles['submit-btn']}
-          disabled={!validName || !validDisplayName || !validEmail || !validPwd || !validPwdMatch}
+          disabled={!validName || !validNickname || !validEmail || !validPwd || !validPwdMatch}
         >
           Create Account
         </button>
