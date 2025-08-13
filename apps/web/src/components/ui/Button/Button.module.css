@@ -35,15 +35,6 @@
   outline: none;
 }
 
-.icon {
-  width: 2.5rem;
-  aspect-ratio: 1;
-  stroke: var(--text);
-  transition:
-    stroke 0.15s ease,
-    transform 0.15s ease;
-}
-
 .button:hover .icon {
   stroke: var(--text);
 }

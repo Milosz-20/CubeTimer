@@ -1,11 +1,11 @@
-import React from "react";
-import styles from "./CustomNotification.module.css";
-import { X } from "lucide-react";
+import React from 'react';
+import styles from './CustomNotification.module.css';
+import { X } from 'lucide-react';
 
 interface CustomNotificationProps {
   title: string;
   message: string;
-  variant?: "success" | "error" | "warning" | "info" | "default";
+  variant?: 'success' | 'error' | 'warning' | 'info' | 'default';
   timestamp: Date;
   onClose?: () => void;
   autoHideDuration: number;
@@ -14,9 +14,13 @@ interface CustomNotificationProps {
 export const CustomNotification = React.forwardRef<
   HTMLDivElement,
   CustomNotificationProps
->(({ title, message, variant = "default", timestamp, onClose }, ref) => {
+>(({ title, message, variant = 'default', timestamp, onClose }, ref) => {
   const formatTime = (date: Date) => {
-    return date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    return date.toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+      hour12: false
+    });
   };
 
   return (
@@ -30,7 +34,7 @@ export const CustomNotification = React.forwardRef<
           <button
             className={styles.closeButton}
             onClick={onClose}
-            aria-label="Close notification"
+            aria-label='Close notification'
           >
             <X />
           </button>
@@ -44,4 +48,4 @@ export const CustomNotification = React.forwardRef<
   );
 });
 
-CustomNotification.displayName = "CustomNotification";
+CustomNotification.displayName = 'CustomNotification';

@@ -11,7 +11,7 @@ body {
 .container {
   background: var(--dark-3);
   border-radius: 24px;
-  padding: 48px;
+  padding: 3rem;
   width: 100%;
   max-width: 480px;
   box-shadow:
@@ -19,11 +19,11 @@ body {
     0 0 0 1px rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(20px);
   position: relative;
-  overflow: hidden;
+
   animation: slideInUp 0.6s ease-out;
-  position: absolute;
   transform: translateX(-50%);
   left: 50%;
+  top: 4rem;
 }
 
 .container::before {
@@ -41,21 +41,57 @@ body {
   );
 }
 
+.back {
+  position: absolute;
+  left: 0;
+  padding: 8px;
+  background: var(--dark-5);
+  border: 1px solid var(--dark-6);
+  color: var(--text-2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  & svg {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &:hover {
+    background: var(--dark-6);
+    color: var(--yellow-1);
+    transform: translateX(-2px);
+  }
+
+  &:active {
+    transform: translateX(0);
+  }
+
+  &:hover svg {
+    transform: translateX(-2px);
+  }
+}
+
 .header {
+  margin-bottom: 4rem;
+  text-align: center;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
   h1 {
     font-size: 32px;
     font-weight: 700;
     color: var(--text);
     background-clip: text;
-    margin-bottom: 8px;
+    margin: 0;
   }
   p {
     color: var(--text-2);
     opacity: 0.8;
     font-size: 16px;
   }
-  margin-bottom: 4rem;
-  text-align: center;
 }
 
 .form-group {
@@ -92,17 +128,74 @@ body {
     color: var(--text-2);
     opacity: 0.5;
   }
-  input:hover:not(:focus) {
+  input:hover:not(:focus):not([class*='pwd-']) {
     border-color: var(--dark-6);
     background: var(--dark-5);
   }
   input:focus {
     border-color: var(--yellow-1);
+  }
+  // Green outline for valid password
+  input.pwd-valid {
+    border-color: var(--success);
+  }
 
-    + .input-icon,
-    .input-icon {
-      color: var(--yellow-1);
+  input.pwd-valid:hover:not(:focus) {
+    border-color: var(--success);
+    background: var(--dark-4);
+  }
+
+  input.pwd-valid:focus {
+    border-color: var(--success);
+  }
+
+  // Red outline for invalid password
+  input.pwd-invalid {
+    border-color: var(--error);
+  }
+
+  input.pwd-invalid:hover:not(:focus) {
+    border-color: var(--error);
+    background: var(--dark-4);
+  }
+
+  // Green outline for matching password
+  input.pwd-match {
+    border-color: var(--success);
+  }
+
+  input.pwd-match:hover:not(:focus) {
+    border-color: var(--success);
+    background: var(--dark-4);
+  }
+
+  // Red outline for non-matching password
+  input.pwd-not-match {
+    border-color: var(--error);
+  }
+
+  input.pwd-not-match:hover:not(:focus) {
+    border-color: var(--error);
+    background: var(--dark-4);
+  }
+
+  .eye-button {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: var(--text-2);
+    opacity: 0.6;
+    z-index: 2;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 4px;
+    cursor: pointer;
+
+    &:hover {
       opacity: 1;
+      color: var(--text);
     }
   }
 }
@@ -126,12 +219,21 @@ body {
   animation-delay: 0.6s;
 }
 
+.buttonGroup {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  animation: slideInUp 0.6s ease-out;
+  animation-delay: 0.7s;
+  animation-fill-mode: both;
+}
+
 .submit-btn {
   width: 100%;
   padding: 16px 24px;
   background: linear-gradient(135deg, var(--yellow-1), var(--yellow-2));
   border: none;
-  border-radius: 12px;
+  border-radius: 1rem;
   color: var(--dark-1);
   font-size: 1.6rem;
   font-weight: 600;

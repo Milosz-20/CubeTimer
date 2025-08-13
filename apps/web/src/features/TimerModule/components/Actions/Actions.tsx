@@ -1,7 +1,7 @@
-import React from "react";
-import styles from "./Actions.module.css";
-import { Button } from "@components/ui/Button";
-import { Lock, Unlock, Clipboard, RotateCw } from "lucide-react";
+import React from 'react';
+import styles from './Actions.module.css';
+import { Button } from '@components/ui/Button';
+import { Lock, Unlock, Clipboard, Repeat } from 'lucide-react';
 
 interface ActionsProps {
   onLock: () => void;
@@ -22,23 +22,23 @@ const Actions: React.FC<ActionsProps> = ({
         className={`${styles.lockButton} ${isScrambleLocked ? styles.locked : styles.unlocked}`}
       >
         <Button
-          action={onLock}
+          onClick={onLock}
           icon={isScrambleLocked ? <Lock size={20} /> : <Unlock size={20} />}
-          animation="bounce"
-          animationTiming={{ duration: 200 }}
+          animation='shrink'
+          title={isScrambleLocked ? 'Unlock scramble' : 'Lock scramble'}
         />
       </div>
       <Button
-        action={onCopy}
+        onClick={onCopy}
         icon={<Clipboard size={20} />}
-        animationTiming={{ duration: 200 }}
-        animation="shrink"
+        animation='shrink'
+        title='Copy to clipboard'
       />
       <Button
-        action={onGenerate}
-        icon={<RotateCw size={20} />}
-        animation={isScrambleLocked ? "error" : "rotate"}
-        animationTiming={{ duration: 200 }}
+        onClick={onGenerate}
+        icon={<Repeat size={20} />}
+        animation={isScrambleLocked ? 'error' : 'shrink'}
+        title='Generate new scramble'
       />
     </div>
   );

@@ -1,5 +1,5 @@
 .notification {
-  background: var(--dark-4);
+  background: var(--primary-4);
   border-radius: 12px;
   padding: 16px 20px;
   min-width: 300px;
@@ -11,19 +11,19 @@
 }
 
 .notification.success {
-  border-left-color: var(--green-1);
+  border-left-color: var(--success);
 }
 
 .notification.error {
-  border-left-color: var(--red);
+  border-left-color: var(--error);
 }
 
 .notification.warning {
-  border-left-color: #ffa726;
+  border-left-color: var(--warning);
 }
 
 .notification.info {
-  border-left-color: #42a5f5;
+  border-left-color: var(--info);
 }
 
 .header {
@@ -61,7 +61,7 @@
 }
 
 .closeButton:focus {
-  outline: 1px solid var(--green-1);
+  outline: 1px solid var(--primary-3);
   border-radius: 2px;
 }
 

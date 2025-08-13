@@ -51,20 +51,20 @@ ul {
 }
 
 .listItem::before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   top: 50%;
   transform: translateY(-50%);
   width: 0;
   height: 70%;
-  background-color: var(--green-1);
+  background-color: var(--yellow-1);
   border-radius: 0 2px 2px 0;
   transition: width 0.125s ease-out;
 }
 
 .listItem.active {
-  color: var(--green-1);
+  color: var(--yellow-1);
   background-color: var(--dark-3);
   position: relative;
 }
