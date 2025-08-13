@@ -135,6 +135,24 @@ body {
   input:focus {
     border-color: var(--yellow-1);
   }
+
+  // Zapobiega zmianie koloru pola na białe podczas autouzupełniania
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+    -webkit-text-fill-color: var(--text) !important;
+    background-color: var(--dark-4) !important;
+    border-color: var(--dark-5) !important;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+    border-color: var(--yellow-1) !important;
+  }
+
   // Green outline for valid password
   input.pwd-valid {
     border-color: var(--success);

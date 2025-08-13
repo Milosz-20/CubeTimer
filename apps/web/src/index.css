@@ -89,3 +89,32 @@ div[class*='SnackbarContainer'][class*='top'] {
   top: 7rem !important;
   right: 1.5rem !important;
 }
+
+/* Globalne style dla autouzupełniania - zapobiega zmianie kolorów pól */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+  background-color: var(--dark-4) !important;
+  transition: background-color 5000s ease-in-out 0s !important;
+}
+
+/* Autouzupełnianie dla pól typu password */
+input[type='password']:-webkit-autofill,
+input[type='password']:-webkit-autofill:hover,
+input[type='password']:-webkit-autofill:focus,
+input[type='password']:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+}
+
+/* Autouzupełnianie dla pól typu email */
+input[type='email']:-webkit-autofill,
+input[type='email']:-webkit-autofill:hover,
+input[type='email']:-webkit-autofill:focus,
+input[type='email']:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-text-fill-color: var(--text) !important;
+}

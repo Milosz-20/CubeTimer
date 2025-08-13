@@ -7,23 +7,23 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   position: absolute;
   z-index: 5;
-  right: 0rem;
-  top: 6rem;
+  left: calc(100% + 2rem);
+  top: -0.8rem;
 
   animation: slideIn 0.3s ease-out;
 
   &::before {
     content: '';
     position: absolute;
-    top: -10px;
-    left: 20px;
+    top: 20px;
+    left: -10px;
     width: 16px;
     height: 16px;
     background: var(--dark-2);
     border: 2px solid var(--dark-6);
     border-bottom: none;
     border-right: none;
-    transform: rotate(45deg);
+    transform: rotate(-45deg);
     z-index: -1;
   }
 }

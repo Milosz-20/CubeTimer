@@ -210,7 +210,7 @@ const RegisterForm: React.FC = () => {
         <div className={styles['form-group']}>
           <Mail className={styles['input-icon']} size={20} />
           <input
-            type='text'
+            type='email'
             id='email'
             value={email}
             onChange={(e) => {
@@ -222,7 +222,7 @@ const RegisterForm: React.FC = () => {
             }}
             onFocus={() => setShowEmailModal(true)}
             placeholder='Email Address'
-            autoComplete='off'
+            autoComplete='email'
             required
           />
           <EmailModal isVisible={showEmailModal} />
@@ -248,7 +248,7 @@ const RegisterForm: React.FC = () => {
             }}
             onFocus={() => setShowPwdModal(true)}
             placeholder='Password'
-            autoComplete='off'
+            autoComplete='new-password'
             required
             className={
               pwd.length > 0
@@ -295,7 +295,7 @@ const RegisterForm: React.FC = () => {
             }}
             onFocus={() => setShowPwdMatchModal(true)}
             placeholder='Repeat Password'
-            autoComplete='off'
+            autoComplete='new-password'
             required
             className={
               pwdMatch.length > 0
