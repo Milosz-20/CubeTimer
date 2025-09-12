@@ -1,0 +1,33 @@
+.profileBtn {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0 0.75rem;
+  text-decoration: none;
+  color: var(--text);
+  border-radius: 3rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  min-height: 3rem;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: var(--text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.username {
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

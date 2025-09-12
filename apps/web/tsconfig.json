@@ -17,7 +17,8 @@
       "@utils/*": ["utils/*"],
       "@store/*": ["store/*"],
       "@app/*": ["app/*"],
-      "@api/*": ["api/*"]
+      "@api/*": ["api/*"],
+      "@app-types/*": ["types/*"]
     }
   },
   "include": ["src"],

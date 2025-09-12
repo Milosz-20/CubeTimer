@@ -1,6 +1,7 @@
-import React, { ReactNode } from "react";
-import { ReduxProvider } from "./ReduxProvider";
-import { NotificationProvider } from "./NotificationProvider";
+import React, { ReactNode } from 'react';
+import { ReduxProvider } from './ReduxProvider';
+import { NotificationProvider } from './NotificationProvider';
+import { AuthProvider } from './AuthProvider';
 
 interface AppProvidersProps {
   children: ReactNode;
@@ -9,7 +10,9 @@ interface AppProvidersProps {
 export const AppProviders: React.FC<AppProvidersProps> = ({ children }) => {
   return (
     <ReduxProvider>
-      <NotificationProvider>{children}</NotificationProvider>
+      <AuthProvider>
+        <NotificationProvider>{children}</NotificationProvider>
+      </AuthProvider>
     </ReduxProvider>
   );
 };
