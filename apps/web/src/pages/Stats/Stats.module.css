@@ -20,9 +20,9 @@
 
 .section {
   padding: 1.5rem;
-  background-color: var(--dark-1);
+  background-color: var(--primary-1);
   border-radius: 1rem;
-  border: 1px solid var(--dark-3);
+  border: 1px solid var(--primary-3);
 }
 
 .solvesSection {
@@ -48,7 +48,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  background-color: var(--dark-2);
+  background-color: var(--primary-2);
   border-radius: 0.5rem;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .averageTime {
-  color: var(--green-1);
+  color: var(--success);
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -76,7 +76,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0.75rem;
-  background-color: var(--dark-2);
+  background-color: var(--primary-2);
   border-radius: 0.5rem;
 }
 
@@ -87,7 +87,7 @@
 }
 
 .recordTime {
-  color: var(--green-2);
+  color: var(--success);
   font-size: 1.4rem;
   font-weight: 600;
 }
@@ -119,7 +119,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: var(--dark-1);
+  background-color: var(--primary-1);
   width: 80px;
   height: 80px;
   border-radius: 50%;
@@ -127,7 +127,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 2px solid var(--dark-3);
+  border: 2px solid var(--primary-3);
 }
 
 .totalSolves {
@@ -174,7 +174,7 @@
   grid-template-columns: 80px 120px 1fr;
   gap: 1rem;
   padding: 0.75rem;
-  background-color: var(--dark-2);
+  background-color: var(--primary-2);
   border-radius: 0.5rem;
   font-weight: 600;
   color: var(--text);
@@ -186,18 +186,18 @@
   grid-template-columns: 80px 120px 1fr;
   gap: 1rem;
   padding: 0.75rem;
-  background-color: var(--dark-2);
+  background-color: var(--primary-2);
   border-radius: 0.5rem;
   transition: background-color 0.15s ease;
   font-size: 1.6rem;
 }
 
 .tableRow:hover {
-  background-color: var(--dark-3);
+  background-color: var(--primary-3);
 }
 
 .timeCell {
-  color: var(--green-1);
+  color: var(--success);
   font-weight: 600;
   font-size: 1.4rem;
 }
@@ -218,9 +218,9 @@
 /* Placeholder */
 .placeholder {
   padding: 1.5rem;
-  background-color: var(--dark-2);
+  background-color: var(--primary-2);
   border-radius: 1rem;
-  border-left: 4px solid var(--green-1);
+  border-left: 4px solid var(--success);
   margin-top: 2rem;
 }
 

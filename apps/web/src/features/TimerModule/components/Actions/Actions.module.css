@@ -22,5 +22,5 @@
 }
 
 .lockButton.locked svg {
-  stroke: var(--red);
+  stroke: var(--error);
 }

@@ -5,6 +5,28 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CubeTimer</title>
+    <!-- Preload critical fonts to prevent FOUT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <style>
+      :root {
+        --loading-bg: oklch(0.18 0 0);
+      }
+
+      /* Prevent white flash during loading */
+      html,
+      body,
+      #root {
+        margin: 0 !important;
+        padding: 0 !important;
+        background: var(--loading-bg) !important;
+        color: rgba(255, 255, 255, 0.87) !important;
+      }
+
+      #root {
+        min-height: 100vh !important;
+      }
+    </style>
   </head>
   <body>
     <div id="root"></div>

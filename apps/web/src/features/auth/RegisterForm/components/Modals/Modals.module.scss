@@ -1,6 +1,6 @@
 .modal {
-  background: var(--dark-2);
-  border: 2px var(--dark-6) solid;
+  background: var(--primary-2);
+  border: 2px var(--primary-6) solid;
   border-radius: 12px;
   padding: 2rem;
   width: 28rem;
@@ -19,8 +19,8 @@
     left: -10px;
     width: 16px;
     height: 16px;
-    background: var(--dark-2);
-    border: 2px solid var(--dark-6);
+    background: var(--primary-2);
+    border: 2px solid var(--primary-6);
     border-bottom: none;
     border-right: none;
     transform: rotate(-45deg);
@@ -38,7 +38,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 0.5rem;
-    color: var(--yellow-1);
+    color: var(--accent-1);
   }
 
   .title {
@@ -69,8 +69,8 @@
   }
 
   code {
-    background: var(--dark-1);
-    color: var(--yellow-1);
+    background: var(--primary-1);
+    color: var(--accent-1);
     padding: 2px 4px;
     border-radius: 4px;
     font-family: 'JetBrains Mono', monospace;
@@ -150,7 +150,7 @@
     background: rgba(34, 197, 94, 0.1);
     border: 1px solid rgba(34, 197, 94, 0.3);
     border-radius: 6px;
-    color: var(--green-1, #22c55e);
+    color: var(--success);
     font-size: 0.9rem;
     font-weight: 500;
   }

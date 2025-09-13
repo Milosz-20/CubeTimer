@@ -15,6 +15,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
+  /* Loading background */
+  --loading-bg: oklch(0.18 0 0);
+
   /* Primary colors (dark theme) */
   --primary-0: oklch(0.18 0 0);
   --primary-1: oklch(0.22 0 0);
@@ -43,29 +46,6 @@
   --success: #51cf66;
   --info: #74c0fc;
   --warning: #ffd43b;
-
-  /* Legacy color mappings for backward compatibility */
-  --dark-0: var(--primary-0);
-  --dark-1: var(--primary-1);
-  --dark-2: var(--primary-2);
-  --dark-3: var(--primary-3);
-  --dark-4: var(--primary-4);
-  --dark-5: var(--primary-5);
-  --dark-6: var(--primary-6);
-  --dark-7: var(--primary-7);
-  --dark-8: var(--primary-8);
-  --green-1: var(--secondary-1);
-  --green-2: var(--secondary-2);
-  --green-3: var(--secondary-3);
-  --green-4: var(--secondary-4);
-  --green-5: var(--secondary-5);
-  --yellow-1: var(--accent-1);
-  --yellow-2: var(--accent-2);
-  --yellow-3: var(--accent-3);
-  --white-1: var(--neutral-1);
-  --white-2: var(--neutral-2);
-  --red: var(--error);
-  --green: var(--success);
 }
 
 html {
@@ -95,9 +75,9 @@ input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-4) inset !important;
   -webkit-text-fill-color: var(--text) !important;
-  background-color: var(--dark-4) !important;
+  background-color: var(--primary-4) !important;
   transition: background-color 5000s ease-in-out 0s !important;
 }
 
@@ -106,7 +86,7 @@ input[type='password']:-webkit-autofill,
 input[type='password']:-webkit-autofill:hover,
 input[type='password']:-webkit-autofill:focus,
 input[type='password']:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-4) inset !important;
   -webkit-text-fill-color: var(--text) !important;
 }
 
@@ -115,6 +95,6 @@ input[type='email']:-webkit-autofill,
 input[type='email']:-webkit-autofill:hover,
 input[type='email']:-webkit-autofill:focus,
 input[type='email']:-webkit-autofill:active {
-  -webkit-box-shadow: 0 0 0 30px var(--dark-4) inset !important;
+  -webkit-box-shadow: 0 0 0 30px var(--primary-4) inset !important;
   -webkit-text-fill-color: var(--text) !important;
 }

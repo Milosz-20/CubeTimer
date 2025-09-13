@@ -72,9 +72,9 @@ const TimerModule: React.FC = () => {
 
   let displayTextColor = "var(--text)";
   if (isHolding) {
-    displayTextColor = "var(--red)";
+    displayTextColor = "var(--error)";
   } else if (isReady && !isRunning) {
-    displayTextColor = "var(--green)";
+    displayTextColor = "var(--success)";
   }
 
   return (

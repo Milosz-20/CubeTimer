@@ -1,8 +1,8 @@
-import { RootState } from "@store/store";
-import { useDispatch, useSelector } from "react-redux";
-import styles from "./Status.module.css";
-import { markAllAsRead, clearAll } from "@store/slices/notificationsSlice";
-import { Button } from "@components/ui/Button";
+import { RootState } from '@store/store';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from './Status.module.css';
+import { markAllAsRead, clearAll } from '@store/slices/notificationsSlice';
+import { Button } from '@components/ui/Button';
 
 const Status: React.FC = () => {
   const notifications = useSelector(
@@ -23,15 +23,15 @@ const Status: React.FC = () => {
       <div className={styles.stats}>
         <Button
           text={`Total: ${notifications.length}`}
-          color="--dark-5"
-          borderRd="0.75rem"
-          size="medium"
+          color='--primary-5'
+          borderRd='0.75rem'
+          size='medium'
         />
         <Button
           text={`Unread: ${unreadCount}`}
-          color="--dark-5"
-          borderRd="0.75rem"
-          size="medium"
+          color='--primary-5'
+          borderRd='0.75rem'
+          size='medium'
         />
       </div>
       <div className={styles.actions}>

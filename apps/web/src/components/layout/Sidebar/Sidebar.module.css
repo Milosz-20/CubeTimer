@@ -1,5 +1,5 @@
 .sidebar {
-  background-color: var(--dark-1);
+  background-color: var(--primary-1);
   margin: 1.5rem;
   margin-right: 0.5rem;
   padding: 2rem;
@@ -9,7 +9,7 @@
 }
 
 .niceLine {
-  background: var(--dark-5);
+  background: var(--primary-5);
 }
 
 .account {
@@ -41,7 +41,7 @@
   }
 
   .listItem:hover:not(.active) {
-    background-color: var(--dark-5);
+    background-color: var(--primary-5);
   }
 
   .listItem::before {
@@ -52,14 +52,14 @@
     transform: translateY(-50%);
     width: 0;
     height: 70%;
-    background-color: var(--yellow-1);
+    background-color: var(--accent-1);
     border-radius: 0 2px 2px 0;
     transition: width 0.125s ease-out;
   }
 
   .listItem.active {
-    color: var(--yellow-1);
-    background-color: var(--dark-3);
+    color: var(--accent-1);
+    background-color: var(--primary-3);
     position: relative;
   }
 
@@ -72,7 +72,7 @@
   }
 
   .listItem:hover:not(.active) {
-    background-color: var(--dark-5);
+    background-color: var(--primary-5);
   }
 
   .listItem a:link,

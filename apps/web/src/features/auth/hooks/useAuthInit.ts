@@ -10,11 +10,7 @@ export const useAuthInit = () => {
   const isLoading = useSelector((state: RootState) => state.auth.isLoading);
   const hasInitialized = useRef(false);
 
-  const {
-    data: userData,
-    isError,
-    isSuccess
-  } = useGetMeQuery();
+  const { data: userData, isError, isSuccess } = useGetMeQuery();
 
   useEffect(() => {
     if (isSuccess && userData) {

@@ -120,10 +120,10 @@ const StatsPage: React.FC = () => {
                 className={styles.pieSlice}
                 style={{
                   background: `conic-gradient(
-                  var(--green-1) 0deg 108deg,
-                  var(--green-2) 108deg 180deg,
-                  var(--green-3) 180deg 252deg,
-                  var(--red) 252deg 360deg
+                  var(--success) 0deg 108deg,
+                  var(--success) 108deg 180deg,
+                  var(--success) 180deg 252deg,
+                  var(--error) 252deg 360deg
                 )`
                 }}
               ></div>
@@ -136,28 +136,28 @@ const StatsPage: React.FC = () => {
               <div className={styles.legendItem}>
                 <div
                   className={styles.legendColor}
-                  style={{ backgroundColor: "var(--green-1)" }}
+                  style={{ backgroundColor: "var(--success)" }}
                 ></div>
                 <span>&lt; 12s (30%)</span>
               </div>
               <div className={styles.legendItem}>
                 <div
                   className={styles.legendColor}
-                  style={{ backgroundColor: "var(--green-2)" }}
+                  style={{ backgroundColor: "var(--success)" }}
                 ></div>
                 <span>12-15s (20%)</span>
               </div>
               <div className={styles.legendItem}>
                 <div
                   className={styles.legendColor}
-                  style={{ backgroundColor: "var(--green-3)" }}
+                  style={{ backgroundColor: "var(--success)" }}
                 ></div>
                 <span>15-18s (20%)</span>
               </div>
               <div className={styles.legendItem}>
                 <div
                   className={styles.legendColor}
-                  style={{ backgroundColor: "var(--red)" }}
+                  style={{ backgroundColor: "var(--error)" }}
                 ></div>
                 <span>&gt; 18s (30%)</span>
               </div>
