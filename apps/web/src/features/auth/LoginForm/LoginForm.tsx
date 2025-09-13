@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useLoginMutation, authApiSlice } from '@features/auth/api/authApi';
 import { setAuth } from '@features/auth/slices/authSlice';
@@ -150,9 +150,12 @@ const LoginForm: React.FC = () => {
             {/* Register Link */}
             <div className={styles['register-link']}>
               <span>Want to create an account? </span>
-              <a href='/auth/register' className={styles['login-link-text']}>
+              <Link
+                to='/auth/register'
+                className={styles['register-link-text']}
+              >
                 Register
-              </a>
+              </Link>
             </div>
           </section>
         )}

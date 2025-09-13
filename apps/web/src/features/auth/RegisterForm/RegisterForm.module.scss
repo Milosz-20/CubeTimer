@@ -48,7 +48,7 @@ body {
   background: var(--dark-5);
   border: 1px solid var(--dark-6);
   color: var(--text-2);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
   & svg {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }

@@ -11,7 +11,7 @@ import {
 import { useRef, useState, useEffect } from 'react';
 import styles from './RegisterForm.module.scss';
 import { Button } from '@components/ui/Button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import {
   UsernameModal,
   NicknameModal,
@@ -338,9 +338,9 @@ const RegisterForm: React.FC = () => {
       {/* Login Link */}
       <div className={styles['login-link']}>
         <span>Already have an account? </span>
-        <a href='/auth/login' className={styles['login-link-text']}>
+        <Link to='/auth/login' className={styles['login-link-text']}>
           Log in
-        </a>
+        </Link>
       </div>
     </div>
   );
