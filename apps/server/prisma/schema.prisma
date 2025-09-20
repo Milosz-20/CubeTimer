@@ -40,6 +40,7 @@ model Solve {
 
 model User {
   id                   Int            @id @default(autoincrement())
+  uuid                 String         @unique @db.Uuid
   username             String         @unique @db.VarChar(50)
   nickname             String?        @db.VarChar(50)
   email                String         @unique @db.VarChar(100)
@@ -49,8 +50,29 @@ model User {
   solves               Solve[]
   receivedNotifications Notification[] @relation("NotificationReceiver")
   sentNotifications     Notification[] @relation("NotificationSender")
+  authSessions         AuthSession[]
 
   @@map("users")
+}
+
+model AuthSession {
+  id           String   @id @default(cuid())
+  userId       Int
+  refreshToken String   @unique // zahashowany refresh token
+  expiresAt    DateTime
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  lastActivity DateTime @default(now())
+  isRevoked    Boolean  @default(false)
+  
+  // Metadane sesji dla zarządzania
+  userAgent    String?  @db.Text
+  ipAddress    String?  @db.VarChar(45) // IPv6 max length
+  deviceName  String?  @db.VarChar(100) // Przyjazna nazwa urządzenia
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  @@map("auth_sessions")
 }
 
 model Notification {

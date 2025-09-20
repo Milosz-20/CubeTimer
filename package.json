@@ -1,9 +1,10 @@
 {
   "name": "cubetimer",
   "devDependencies": {
+    "@types/bun": "latest",
     "@types/dotenv": "^6.1.1",
-    "turbo": "^2.5.5",
-    "@types/bun": "latest"
+    "@types/passport-local": "^1.0.38",
+    "turbo": "^2.5.5"
   },
   "packageManager": "bun@1.2.13",
   "private": true,
@@ -20,6 +21,9 @@
     "packages/*"
   ],
   "dependencies": {
+    "@nestjs/mapped-types": "^2.1.0",
+    "@types/pg": "^8.15.5",
+    "bcrypt": "^6.0.0",
     "dotenv": "^16.6.1",
     "motion": "^12.23.12"
   },

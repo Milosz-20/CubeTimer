@@ -1,72 +1,131 @@
-import { ForbiddenException, Injectable } from '@nestjs/common';
-import { PrismaService } from 'src/prisma/prisma.service';
-import { RegisterDto, LoginDto } from './dto';
-import * as argon from 'argon2';
-import { PrismaClientKnownRequestError } from 'generated/prisma/runtime/library';
-import { JwtService } from '@nestjs/jwt';
+import { Injectable, Logger, UnauthorizedException } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
+import { JwtService } from '@nestjs/jwt';
+import { Request, Response } from 'express';
+import { UserService } from '../user/user.service';
+import { User } from '../../generated/prisma';
 import { AuthUtils } from './utils';
+import * as argon from 'argon2';
+import { randomUUID } from 'crypto';
+import { AuthSessionService } from 'src/auth-session/auth-session.service';
 
 @Injectable()
 export class AuthService {
+  private readonly logger = new Logger(AuthService.name);
+
   constructor(
-    private prisma: PrismaService,
-    private jwt: JwtService,
-    private config: ConfigService
+    private readonly userService: UserService,
+    private readonly configService: ConfigService,
+    private readonly jwtService: JwtService,
+    private readonly authSessionService: AuthSessionService
   ) {}
-  async register(dto: RegisterDto) {
+
+  async login(user: User, response: Response) {
     try {
-      const hash = await argon.hash(dto.password);
-      const user = await this.prisma.user.create({
-        data: {
-          username: dto.username,
-          nickname: dto.nickname,
-          email: dto.email,
-          passwordHash: hash
-        }
+      const jwtAccessSecret = this.configService.getOrThrow(
+        'JWT_ACCESS_TOKEN_SECRET'
+      );
+      const accessExpirationMs = AuthUtils.msFromMinutes(
+        parseInt(
+          this.configService.getOrThrow('JWT_ACCESS_TOKEN_EXPIRY_MINUTES')
+        )
+      );
+      const refreshExpirationMs = AuthUtils.msFromDays(
+        parseInt(this.configService.getOrThrow('JWT_REFRESH_TOKEN_EXPIRY_DAYS'))
+      );
+      const expiresAccessToken = new Date(Date.now() + accessExpirationMs);
+      const expiresRefreshToken = new Date(Date.now() + refreshExpirationMs);
+
+      const tokenPayload = { userId: user.id };
+
+      const accessToken = this.jwtService.sign(tokenPayload, {
+        secret: jwtAccessSecret,
+        expiresIn: `${accessExpirationMs}ms`
       });
-      return this.signToken(user.id, user.email, user.username);
-    } catch (error) {
-      if (error instanceof PrismaClientKnownRequestError) {
-        if (error.code === 'P2002') {
-          throw new ForbiddenException('Credentials already taken');
-        }
+
+      const refreshToken = randomUUID();
+
+      const userData = {
+        id: user.id,
+        uuid: user.uuid,
+        username: user.username,
+        email: user.email,
+        createdAt: user.createdAt
+      };
+
+      await this.authSessionService.createSession({
+        userId: user.id,
+        refreshToken: await argon.hash(refreshToken),
+        expiresAt: expiresRefreshToken
+      });
+
+      response.cookie('Authentication', accessToken, {
+        httpOnly: true,
+        secure: this.configService.get('NODE_ENV') === 'production',
+        expires: expiresAccessToken,
+        path: '/'
+      });
+
+      response.cookie('Refresh', refreshToken, {
+        httpOnly: true,
+        secure: this.configService.get('NODE_ENV') === 'production',
+        expires: expiresRefreshToken,
+        path: '/api/auth/refresh'
+      });
+
+      return userData;
+    } catch (error: any) {
+      this.logger.error('Login error:', {
+        error: error.message,
+        userId: user.id,
+        stack: error.stack
+      });
+      throw new UnauthorizedException(
+        'Failed to process login. Please try again.'
+      );
+    }
+  }
+
+  async verifyUser(login: string, password: string) {
+    try {
+      const isEmail = login.includes('@');
+      const user = isEmail
+        ? await this.userService.getUserByEmail(login)
+        : await this.userService.getUserByUsername(login);
+
+      if (!user) {
+        throw new UnauthorizedException('Credentials incorrect');
       }
-      throw error;
+
+      const authenticated = await argon.verify(user.passwordHash, password);
+      if (!authenticated) {
+        throw new UnauthorizedException('Credentials incorrect');
+      }
+
+      return user;
+    } catch (error) {
+      this.logger.error('Verify user error', error);
+      throw new UnauthorizedException('Credentials are not valid');
     }
   }
-  async login(dto: LoginDto) {
-    const isEmail = dto.login.includes('@');
-    const loginMethod = isEmail
-      ? { email: dto.login }
-      : { username: dto.login };
-    const user = await this.prisma.user.findUnique({ where: loginMethod });
-    if (!user) {
-      throw new ForbiddenException('Credentials incorrect');
-    }
-    const pwMatches = await argon.verify(user.passwordHash, dto.password);
-    if (!pwMatches) {
-      throw new ForbiddenException('Credentials incorrect');
-    }
-    return this.signToken(user.id, user.email, user.username);
-  }
 
-  async signToken(
-    userId: number,
-    email: string,
-    username: string
-  ): Promise<{ access_token: string; expiryMs: number }> {
-    const payload = { sub: userId, email, username };
-    const secret = this.config.get('JWT_SECRET');
-    const expiryMinutes = this.config.get('JWT_EXPIRY_MINUTES');
+  async signOut(request: Request, response: Response) {
+    try {
+      const refreshToken = request.cookies['Refresh']; // Pobierz z ciasteczka
 
-    const token = await this.jwt.signAsync(payload, {
-      expiresIn: AuthUtils.getJwtExpiryString(expiryMinutes),
-      secret: secret
-    });
-    return {
-      access_token: token,
-      expiryMs: AuthUtils.getJwtExpiryMs(expiryMinutes)
-    };
+      if (refreshToken) {
+        await this.authSessionService.deleteSessionById(refreshToken);
+      }
+
+      response.clearCookie('Authentication');
+      response.clearCookie('Refresh');
+      response.status(200).json({ message: 'Successfully signed out' });
+    } catch (error: any) {
+      this.logger.error('Sign out error:', {
+        error: error.message,
+        stack: error.stack
+      });
+      throw new UnauthorizedException('Failed to process sign out');
+    }
   }
 }
