@@ -1,47 +1,13 @@
 import { Injectable, Logger } from '@nestjs/common';
-import { CreateUserDto } from './dto/create-user.dto';
 import { PrismaService } from 'src/prisma/prisma.service';
 import * as argon from 'argon2';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { randomUUID } from 'crypto';
 
 @Injectable()
 export class UserService {
   private readonly logger = new Logger(UserService.name);
 
   constructor(private prismaService: PrismaService) {}
-
-  async createUser(user: CreateUserDto) {
-    try {
-      const hashedPassword = await argon.hash(user.password);
-      const uuid = randomUUID();
-
-      return await this.prismaService.user.create({
-        data: {
-          uuid,
-          username: user.username,
-          email: user.email,
-          nickname: user.nickname,
-          passwordHash: hashedPassword // Note: schema uses passwordHash
-        },
-        select: {
-          id: true,
-          uuid: true,
-          username: true,
-          nickname: true,
-          email: true,
-          createdAt: true
-        }
-      });
-    } catch (error: any) {
-      this.logger.error('Failed to create user:', {
-        error: error.message,
-        username: user.username,
-        email: user.email
-      });
-      throw error;
-    }
-  }
 
   async getUserByUUId(uuid: string) {
     try {

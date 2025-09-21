@@ -1,9 +1,9 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Param, UseGuards } from '@nestjs/common';
 // import { JwtGuard } from '../auth/guard';
 import { User } from 'generated/prisma';
 import { UserService } from './user.service';
-import { CreateUserDto } from './dto/create-user.dto';
 import { CurrentUser } from 'src/auth/decorator';
+import { JwtAuthGuard } from 'src/auth/guard';
 
 @Controller('users')
 export class UserController {
@@ -14,8 +14,9 @@ export class UserController {
     return user;
   }
 
-  @Post('new')
-  async createUser(@Body() request: CreateUserDto) {
-    return this.userService.createUser(request);
+  @Get('uuid/:uuid')
+  @UseGuards(JwtAuthGuard)
+  async getUserByUUID(@Param('uuid') userId: string) {
+    return this.userService.getUserByUUId(userId);
   }
 }

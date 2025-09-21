@@ -8,6 +8,8 @@ import { AuthUtils } from './utils';
 import * as argon from 'argon2';
 import { randomUUID } from 'crypto';
 import { AuthSessionService } from 'src/auth-session/auth-session.service';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { RegisterUserDto } from './dto';
 
 @Injectable()
 export class AuthService {
@@ -15,6 +17,7 @@ export class AuthService {
 
   constructor(
     private readonly userService: UserService,
+    private readonly prismaService: PrismaService,
     private readonly configService: ConfigService,
     private readonly jwtService: JwtService,
     private readonly authSessionService: AuthSessionService
@@ -70,7 +73,7 @@ export class AuthService {
         httpOnly: true,
         secure: this.configService.get('NODE_ENV') === 'production',
         expires: expiresRefreshToken,
-        path: '/api/auth/refresh'
+        path: '/api/auth'
       });
 
       return userData;
@@ -83,6 +86,38 @@ export class AuthService {
       throw new UnauthorizedException(
         'Failed to process login. Please try again.'
       );
+    }
+  }
+
+  async register(user: RegisterUserDto) {
+    try {
+      const hashedPassword = await argon.hash(user.password);
+      const uuid = randomUUID();
+
+      return await this.prismaService.user.create({
+        data: {
+          uuid,
+          username: user.username,
+          email: user.email,
+          nickname: user.nickname,
+          passwordHash: hashedPassword // Note: schema uses passwordHash
+        },
+        select: {
+          id: true,
+          uuid: true,
+          username: true,
+          nickname: true,
+          email: true,
+          createdAt: true
+        }
+      });
+    } catch (error: any) {
+      this.logger.error('Failed to create user:', {
+        error: error.message,
+        username: user.username,
+        email: user.email
+      });
+      throw error;
     }
   }
 
@@ -109,23 +144,64 @@ export class AuthService {
     }
   }
 
-  async signOut(request: Request, response: Response) {
+  async signOut(userId: number, request: Request, response: Response) {
     try {
       const refreshToken = request.cookies['Refresh']; // Pobierz z ciasteczka
 
+      this.logger.debug(
+        `SignOut for user ${userId}, refresh token present: ${!!refreshToken}`
+      );
       if (refreshToken) {
-        await this.authSessionService.deleteSessionById(refreshToken);
+        this.logger.debug(`Refresh token: ${refreshToken.substring(0, 10)}...`);
       }
 
-      response.clearCookie('Authentication');
-      response.clearCookie('Refresh');
-      response.status(200).json({ message: 'Successfully signed out' });
+      if (refreshToken) {
+        await this.authSessionService.revokeSession(
+          userId,
+          refreshToken // Przekaż raw token, nie hash!
+        );
+      } else {
+        this.logger.warn(
+          `No refresh token found in cookies for user ${userId}`
+        );
+      }
+
+      response.clearCookie('Authentication', { path: '/' });
+      response.clearCookie('Refresh', { path: '/api/auth' });
+
+      return { message: 'Successfully signed out' };
     } catch (error: any) {
       this.logger.error('Sign out error:', {
         error: error.message,
         stack: error.stack
       });
       throw new UnauthorizedException('Failed to process sign out');
+    }
+  }
+
+  async signOutAll(userId: number, response: Response) {
+    try {
+      if (!userId || userId < 0) {
+        throw new Error('User id is not valid, could not revoke all sessions');
+      }
+      this.logger.debug(`SignOutAll for user ${userId}`);
+
+      await this.authSessionService.revokeAllUserSessions(userId);
+
+      // Wyczyść cookies
+      response.clearCookie('Authentication', { path: '/' });
+      response.clearCookie('Refresh', { path: '/api/auth' });
+
+      return { message: 'Successfully signed out from all devices' };
+    } catch (error: any) {
+      this.logger.error('Sign out all error:', {
+        error: error.message,
+        stack: error.stack,
+        userId
+      });
+      throw new UnauthorizedException(
+        'Failed to process sign out from all devices'
+      );
     }
   }
 }
