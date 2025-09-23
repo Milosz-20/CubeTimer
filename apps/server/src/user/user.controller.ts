@@ -10,6 +10,7 @@ export class UserController {
   constructor(private readonly userService: UserService) {}
 
   @Get('me')
+  @UseGuards(JwtAuthGuard)
   getMe(@CurrentUser() user: User /*, @GetUser('email') email: string*/) {
     return user;
   }
