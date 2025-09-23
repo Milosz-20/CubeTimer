@@ -23,38 +23,82 @@ export class AuthService {
     private readonly authSessionService: AuthSessionService
   ) {}
 
+  private generateTokensAndUserData(user: User) {
+    const jwtAccessSecret = this.configService.getOrThrow(
+      'JWT_ACCESS_TOKEN_SECRET'
+    );
+    const jwtRefreshSecret = this.configService.getOrThrow(
+      'JWT_REFRESH_TOKEN_SECRET'
+    );
+    const accessExpirationMs = AuthUtils.msFromMinutes(
+      parseInt(this.configService.getOrThrow('JWT_ACCESS_TOKEN_EXPIRY_MINUTES'))
+    );
+    const refreshExpirationMs = AuthUtils.msFromDays(
+      parseInt(this.configService.getOrThrow('JWT_REFRESH_TOKEN_EXPIRY_DAYS'))
+    );
+    const expiresAccessToken = new Date(Date.now() + accessExpirationMs);
+    const expiresRefreshToken = new Date(Date.now() + refreshExpirationMs);
+
+    const tokenPayload = { userId: user.id };
+
+    const accessToken = this.jwtService.sign(tokenPayload, {
+      secret: jwtAccessSecret,
+      expiresIn: `${accessExpirationMs}ms`
+    });
+
+    const refreshToken = this.jwtService.sign(tokenPayload, {
+      secret: jwtRefreshSecret,
+      expiresIn: `${refreshExpirationMs}ms`
+    });
+
+    const userData = {
+      id: user.id,
+      uuid: user.uuid,
+      username: user.username,
+      email: user.email,
+      createdAt: user.createdAt
+    };
+
+    return {
+      accessToken,
+      refreshToken,
+      userData,
+      expiresAccessToken,
+      expiresRefreshToken
+    };
+  }
+
+  private setAuthCookies(
+    response: Response,
+    accessToken: string,
+    refreshToken: string,
+    expiresAccessToken: Date,
+    expiresRefreshToken: Date
+  ) {
+    response.cookie('Authentication', accessToken, {
+      httpOnly: true,
+      secure: this.configService.get('NODE_ENV') === 'production',
+      expires: expiresAccessToken,
+      path: '/'
+    });
+
+    response.cookie('Refresh', refreshToken, {
+      httpOnly: true,
+      secure: this.configService.get('NODE_ENV') === 'production',
+      expires: expiresRefreshToken,
+      path: '/api/auth'
+    });
+  }
+
   async login(user: User, response: Response) {
     try {
-      const jwtAccessSecret = this.configService.getOrThrow(
-        'JWT_ACCESS_TOKEN_SECRET'
-      );
-      const accessExpirationMs = AuthUtils.msFromMinutes(
-        parseInt(
-          this.configService.getOrThrow('JWT_ACCESS_TOKEN_EXPIRY_MINUTES')
-        )
-      );
-      const refreshExpirationMs = AuthUtils.msFromDays(
-        parseInt(this.configService.getOrThrow('JWT_REFRESH_TOKEN_EXPIRY_DAYS'))
-      );
-      const expiresAccessToken = new Date(Date.now() + accessExpirationMs);
-      const expiresRefreshToken = new Date(Date.now() + refreshExpirationMs);
-
-      const tokenPayload = { userId: user.id };
-
-      const accessToken = this.jwtService.sign(tokenPayload, {
-        secret: jwtAccessSecret,
-        expiresIn: `${accessExpirationMs}ms`
-      });
-
-      const refreshToken = randomUUID();
-
-      const userData = {
-        id: user.id,
-        uuid: user.uuid,
-        username: user.username,
-        email: user.email,
-        createdAt: user.createdAt
-      };
+      const {
+        accessToken,
+        refreshToken,
+        userData,
+        expiresAccessToken,
+        expiresRefreshToken
+      } = this.generateTokensAndUserData(user);
 
       await this.authSessionService.createSession({
         userId: user.id,
@@ -62,19 +106,13 @@ export class AuthService {
         expiresAt: expiresRefreshToken
       });
 
-      response.cookie('Authentication', accessToken, {
-        httpOnly: true,
-        secure: this.configService.get('NODE_ENV') === 'production',
-        expires: expiresAccessToken,
-        path: '/'
-      });
-
-      response.cookie('Refresh', refreshToken, {
-        httpOnly: true,
-        secure: this.configService.get('NODE_ENV') === 'production',
-        expires: expiresRefreshToken,
-        path: '/api/auth'
-      });
+      this.setAuthCookies(
+        response,
+        accessToken,
+        refreshToken,
+        expiresAccessToken,
+        expiresRefreshToken
+      );
 
       return userData;
     } catch (error: any) {
@@ -201,6 +239,45 @@ export class AuthService {
       });
       throw new UnauthorizedException(
         'Failed to process sign out from all devices'
+      );
+    }
+  }
+
+  async refreshTokens(user: User, oldRefreshToken: string, response: Response) {
+    try {
+      const {
+        accessToken,
+        refreshToken,
+        userData,
+        expiresAccessToken,
+        expiresRefreshToken
+      } = this.generateTokensAndUserData(user);
+
+      // Aktualizuj istniejącą sesję zamiast tworzenia nowej
+      await this.authSessionService.updateSessionRefreshToken(
+        user.id,
+        oldRefreshToken,
+        await argon.hash(refreshToken),
+        expiresRefreshToken
+      );
+
+      this.setAuthCookies(
+        response,
+        accessToken,
+        refreshToken,
+        expiresAccessToken,
+        expiresRefreshToken
+      );
+
+      return userData;
+    } catch (error: any) {
+      this.logger.error('Refresh tokens error:', {
+        error: error.message,
+        userId: user.id,
+        stack: error.stack
+      });
+      throw new UnauthorizedException(
+        'Failed to refresh tokens. Please try again.'
       );
     }
   }

@@ -7,6 +7,8 @@ import { Request, Response } from 'express';
 import { JwtAuthGuard } from './guard';
 import { RegisterUserDto } from './dto';
 
+import { JwtRefreshAuthGuard } from './guard/jwt-refresh-auth.guard';
+
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -42,5 +44,20 @@ export class AuthController {
     @Res({ passthrough: true }) response: Response
   ) {
     return await this.authService.signOutAll(user.id, response);
+  }
+
+  @Post('refresh')
+  @UseGuards(JwtRefreshAuthGuard)
+  async refresh(
+    @CurrentUser() user: User,
+    @Req() request: Request,
+    @Res({ passthrough: true }) response: Response
+  ) {
+    const oldRefreshToken = request.cookies?.Refresh;
+    return await this.authService.refreshTokens(
+      user,
+      oldRefreshToken,
+      response
+    );
   }
 }
